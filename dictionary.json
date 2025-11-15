@@ -540,5 +540,291 @@
           "russian": "много / больше"
         }
       ],
+      "time": [
+        {
+          "tajik": "вақт",
+          "pronunciation_latin": "vaqt",
+          "pronunciation_cyrillic": "вақт",
+          "english": "time",
+          "russian": "время"
+        },
+        {
+          "tajik": "соат",
+          "pronunciation_latin": "soat",
+          "pronunciation_cyrillic": "со-ат",
+          "english": "hour / clock",
+          "russian": "час / часы"
+        },
+        {
+          "tajik": "дақиқа",
+          "pronunciation_latin": "daqiqa",
+          "pronunciation_cyrillic": "да-қи-қá",
+          "english": "minute",
+          "russian": "минута"
+        },
+        {
+          "tajik": "сония",
+          "pronunciation_latin": "soniya",
+          "pronunciation_cyrillic": "со-ни-я́",
+          "english": "second",
+          "russian": "секунда"
+        },
+        {
+          "tajik": "субҳ",
+          "pronunciation_latin": "subh",
+          "pronunciation_cyrillic": "су́бҳ",
+          "english": "morning",
+          "russian": "утро"
+        },
+        {
+          "tajik": "рӯз",
+          "pronunciation_latin": "ruz",
+          "pronunciation_cyrillic": "руз",
+          "english": "day",
+          "russian": "день"
+        },
+        {
+          "tajik": "бегоҳ",
+          "pronunciation_latin": "begoh",
+          "pronunciation_cyrillic": "бе-го́ҳ",
+          "english": "evening",
+          "russian": "вечер"
+        },
+        {
+          "tajik": "шаб",
+          "pronunciation_latin": "shab",
+          "pronunciation_cyrillic": "шаб",
+          "english": "night",
+          "russian": "ночь"
+        },
+        {
+          "tajik": "ҳозир",
+          "pronunciation_latin": "hozir",
+          "pronunciation_cyrillic": "ҳо-зир",
+          "english": "now",
+          "russian": "сейчас"
+        },
+        {
+          "tajik": "дертар",
+          "pronunciation_latin": "dertаr",
+          "pronunciation_cyrillic": "дер-тар",
+          "english": "later",
+          "russian": "позже"
+        },
+        {
+          "tajik": "фардо",
+          "pronunciation_latin": "fardo",
+          "pronunciation_cyrillic": "фар-до́",
+          "english": "tomorrow",
+          "russian": "завтра"
+        },
+        {
+          "tajik": "дирӯз",
+          "pronunciation_latin": "diruz",
+          "pronunciation_cyrillic": "ди-руз́",
+          "english": "yesterday",
+          "russian": "вчера"
+        },
+        {
+          "tajik": "ҳафта",
+          "pronunciation_latin": "hafta",
+          "pronunciation_cyrillic": "ҳаф-та́",
+          "english": "week",
+          "russian": "неделя"
+        },
+        {
+          "tajik": "моҳ",
+          "pronunciation_latin": "moh",
+          "pronunciation_cyrillic": "моҳ",
+          "english": "month",
+          "russian": "месяц"
+        },
+        {
+          "tajik": "сол",
+          "pronunciation_latin": "sol",
+          "pronunciation_cyrillic": "сол",
+          "english": "year",
+          "russian": "год"
+        },
+        {
+          "tajik": "ҳамеша",
+          "pronunciation_latin": "hamesha",
+          "pronunciation_cyrillic": "ҳа-ме́-ша",
+          "english": "always",
+          "russian": "всегда"
+        },
+        {
+          "tajik": "ҳамакнун",
+          "pronunciation_latin": "hamaknun",
+          "pronunciation_cyrillic": "ҳа-ма-кну́н",
+          "english": "right now",
+          "russian": "прямо сейчас"
+        },
+        {
+          "tajik": "баъдан",
+          "pronunciation_latin": "bad'an",
+          "pronunciation_cyrillic": "баъ-дан",
+          "english": "afterwards",
+          "russian": "потом"
+        },
+        {
+          "tajik": "сари вақт",
+          "pronunciation_latin": "sari vaqt",
+          "pronunciation_cyrillic": "са-ри вақт",
+          "english": "on time",
+          "russian": "вовремя"
+        },
+        {
+          "tajik": "қаблан",
+          "pronunciation_latin": "qablаn",
+          "pronunciation_cyrillic": "қа́б-лан",
+          "english": "before",
+          "russian": "до / раньше"
+        }
+      ],
+    
+      "emotions_personality": [
+        {
+          "tajik": "ҳиссиёт",
+          "pronunciation_latin": "hissiyot",
+          "pronunciation_cyrillic": "ҳис-си-ё́т",
+          "english": "emotion",
+          "russian": "эмоция"
+        },
+        {
+          "tajik": "хушҳол",
+          "pronunciation_latin": "khushhol",
+          "pronunciation_cyrillic": "хуш-ҳол",
+          "english": "happy",
+          "russian": "счастливый"
+        },
+        {
+          "tajik": "ғамгин",
+          "pronunciation_latin": "ghamgin",
+          "pronunciation_cyrillic": "ғам-ги́н",
+          "english": "sad",
+          "russian": "грустный"
+        },
+        {
+          "tajik": "тарсидa",
+          "pronunciation_latin": "tarsida",
+          "pronunciation_cyrillic": "тар-си-да́",
+          "english": "scared",
+          "russian": "испуганный"
+        },
+        {
+          "tajik": "ҳайрон",
+          "pronunciation_latin": "hayron",
+          "pronunciation_cyrillic": "ҳа́й-рон",
+          "english": "surprised",
+          "russian": "удивлённый"
+        },
+        {
+          "tajik": "ором",
+          "pronunciation_latin": "orom",
+          "pronunciation_cyrillic": "о-ро́м",
+          "english": "calm",
+          "russian": "спокойный"
+        },
+        {
+          "tajik": "атлас",
+          "pronunciation_latin": "atlas",
+          "pronunciation_cyrillic": "ат-лас",
+          "english": "gentle / soft-hearted",
+          "russian": "мягкий / добрый"
+        },
+        {
+          "tajik": "қавӣ",
+          "pronunciation_latin": "qavi",
+          "pronunciation_cyrillic": "қа-ви́",
+          "english": "strong (emotion or personality)",
+          "russian": "сильный"
+        },
+        {
+          "tajik": "асабонӣ",
+          "pronunciation_latin": "asaboni",
+          "pronunciation_cyrillic": "аса-бо́нӣ",
+          "english": "angry",
+          "russian": "злой"
+        },
+        {
+          "tajik": "хаста",
+          "pronunciation_latin": "khasta",
+          "pronunciation_cyrillic": "хас-та́",
+          "english": "tired",
+          "russian": "усталый"
+        },
+        {
+          "tajik": "ҷиддӣ",
+          "pronunciation_latin": "jiddi",
+          "pronunciation_cyrillic": "ҷид-дӣ́",
+          "english": "serious",
+          "russian": "серьёзный"
+        },
+        {
+          "tajik": "шаодмон",
+          "pronunciation_latin": "shaodmon",
+          "pronunciation_cyrillic": "ша-од-мо́н",
+          "english": "joyful",
+          "russian": "радостный"
+        },
+        {
+          "tajik": "манфӣ",
+          "pronunciation_latin": "manfi",
+          "pronunciation_cyrillic": "ман-фӣ́",
+          "english": "negative",
+          "russian": "негативный"
+        },
+        {
+          "tajik": "мусбат",
+          "pronunciation_latin": "musbat",
+          "pronunciation_cyrillic": "мус-ба́т",
+          "english": "positive",
+          "russian": "позитивный"
+        },
+        {
+          "tajik": "рамзӣ",
+          "pronunciation_latin": "ramzi",
+          "pronunciation_cyrillic": "рам-зӣ́",
+          "english": "symbolic / expressive",
+          "russian": "выразительный"
+        },
+        {
+          "tajik": "меҳрубон",
+          "pronunciation_latin": "mehrubon",
+          "pronunciation_cyrillic": "меҳ-ру-бо́н",
+          "english": "kind",
+          "russian": "добрый"
+        },
+        {
+          "tajik": "дурӯғгин",
+          "pronunciation_latin": "durughgin",
+          "pronunciation_cyrillic": "ду-руғ-ги́н",
+          "english": "dishonest",
+          "russian": "нечестный"
+        },
+        {
+          "tajik": "ҳурматнок",
+          "pronunciation_latin": "hurmatnok",
+          "pronunciation_cyrillic": "ҳур-мат-но́к",
+          "english": "respectful",
+          "russian": "уважительный"
+        },
+        {
+          "tajik": "шух",
+          "pronunciation_latin": "shukh",
+          "pronunciation_cyrillic": "шух",
+          "english": "playful",
+          "russian": "шутливый"
+        },
+        {
+          "tajik": "ғазабнок",
+          "pronunciation_latin": "ghazabnok",
+          "pronunciation_cyrillic": "ға-за́б-нок",
+          "english": "furious",
+          "russian": "взбешённый"
+        }
+      ],
+    
     
   
