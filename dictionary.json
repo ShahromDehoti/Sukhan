@@ -1,0 +1,258 @@
+{
+    "greetings": [
+      {
+        "tajik": "салом",
+        "pronunciation_latin": "salom",
+        "pronunciation_cyrillic": "са-ло́м",
+        "english": "hello",
+        "russian": "привет"
+      },
+      {
+        "tajik": "ассалом алейкум",
+        "pronunciation_latin": "assalom aleikum",
+        "pronunciation_cyrillic": "ас-сa-лoм а-лей-кyм",
+        "english": "peace be upon you",
+        "russian": "мир вам"
+      },
+      {
+        "tajik": "субҳ ба хайр",
+        "pronunciation_latin": "subh ba khayr",
+        "pronunciation_cyrillic": "су́бҳ ба хайр",
+        "english": "good morning",
+        "russian": "доброе утро"
+      },
+      {
+        "tajik": "рӯз ба хайр",
+        "pronunciation_latin": "ruz ba khayr",
+        "pronunciation_cyrillic": "руз ба хайр",
+        "english": "good day",
+        "russian": "добрый день"
+      },
+      {
+        "tajik": "бегоҳ ба хайр",
+        "pronunciation_latin": "begoh ba khayr",
+        "pronunciation_cyrillic": "бе-го́ҳ ба хайр",
+        "english": "good evening",
+        "russian": "добрый вечер"
+      },
+      {
+        "tajik": "хубӣ?",
+        "pronunciation_latin": "khubi?",
+        "pronunciation_cyrillic": "ху́би?",
+        "english": "you good?",
+        "russian": "ты в порядке?"
+      },
+      {
+        "tajik": "чӣ хабар?",
+        "pronunciation_latin": "chi khabar?",
+        "pronunciation_cyrillic": "чӣ хабар?",
+        "english": "what's up?",
+        "russian": "что нового?"
+      },
+      {
+        "tajik": "хуш омадед",
+        "pronunciation_latin": "khush omaded",
+        "pronunciation_cyrillic": "хуш о́мадед",
+        "english": "welcome",
+        "russian": "добро пожаловать"
+      },
+      {
+        "tajik": "хайр",
+        "pronunciation_latin": "khayr",
+        "pronunciation_cyrillic": "хайр",
+        "english": "goodbye",
+        "russian": "пока / до свидания"
+      },
+      {
+        "tajik": "то боз дидан",
+        "pronunciation_latin": "to boz didan",
+        "pronunciation_cyrillic": "то боз дидан",
+        "english": "see you again",
+        "russian": "до встречи"
+      }
+    ],
+  
+    "food": [
+      {
+        "tajik": "хӯрок",
+        "pronunciation_latin": "khorok",
+        "pronunciation_cyrillic": "хӯ-ро́к",
+        "english": "food",
+        "russian": "еда"
+      },
+      {
+        "tajik": "об",
+        "pronunciation_latin": "ob",
+        "pronunciation_cyrillic": "об",
+        "english": "water",
+        "russian": "вода"
+      },
+      {
+        "tajik": "нон",
+        "pronunciation_latin": "non",
+        "pronunciation_cyrillic": "нон",
+        "english": "bread",
+        "russian": "хлеб"
+      },
+      {
+        "tajik": "биринҷ",
+        "pronunciation_latin": "birinj",
+        "pronunciation_cyrillic": "би-ринҷ",
+        "english": "rice",
+        "russian": "рис"
+      },
+      {
+        "tajik": "гӯшт",
+        "pronunciation_latin": "gusht",
+        "pronunciation_cyrillic": "гӯш́т",
+        "english": "meat",
+        "russian": "мясо"
+      },
+      {
+        "tajik": "мурғ",
+        "pronunciation_latin": "murgh",
+        "pronunciation_cyrillic": "му́рғ",
+        "english": "chicken",
+        "russian": "курица"
+      },
+      {
+        "tajik": "моҳӣ",
+        "pronunciation_latin": "mohi",
+        "pronunciation_cyrillic": "моҳӣ́",
+        "english": "fish",
+        "russian": "рыба"
+      },
+      {
+        "tajik": "картошка",
+        "pronunciation_latin": "kartoshka",
+        "pronunciation_cyrillic": "кар-то́шка",
+        "english": "potato",
+        "russian": "картошка"
+      },
+      {
+        "tajik": "пиёз",
+        "pronunciation_latin": "piyoz",
+        "pronunciation_cyrillic": "пи-ёз",
+        "english": "onion",
+        "russian": "лук"
+      },
+      {
+        "tajik": "сабзӣ",
+        "pronunciation_latin": "sabzi",
+        "pronunciation_cyrillic": "сабзӣ́",
+        "english": "carrot",
+        "russian": "морковь"
+      }
+    ],
+  
+    "people_family": [
+      {
+        "tajik": "оила",
+        "pronunciation_l_latin": "oila",
+        "pronunciation_cyrillic": "о-ила́",
+        "english": "family",
+        "russian": "семья"
+      },
+      {
+        "tajik": "падар",
+        "pronunciation_latin": "padar",
+        "pronunciation_cyrillic": "па-да́р",
+        "english": "father",
+        "russian": "отец"
+      },
+      {
+        "tajik": "модар",
+        "pronunciation_latin": "modar",
+        "pronunciation_cyrillic": "мо-да́р",
+        "english": "mother",
+        "russian": "мать"
+      },
+      {
+        "tajik": "бародар",
+        "pronunciation_latin": "barodar",
+        "pronunciation_cyrillic": "ба-ро-да́р",
+        "english": "brother",
+        "russian": "брат"
+      },
+      {
+        "tajik": "хоҳар",
+        "pronunciation_latin": "khokhar",
+        "pronunciation_cyrillic": "хо́ҳар",
+        "english": "sister",
+        "russian": "сестра"
+      },
+      {
+        "tajik": "духтар",
+        "pronunciation_latin": "dukhtar",
+        "pronunciation_cyrillic": "дух-та́р",
+        "english": "daughter / girl",
+        "russian": "дочь / девушка"
+      },
+      {
+        "tajik": "писар",
+        "pronunciation_latin": "pisar",
+        "pronunciation_cyrillic": "пи-са́р",
+        "english": "son",
+        "russian": "сын"
+      },
+      {
+        "tajik": "дӯст",
+        "pronunciation_latin": "dust",
+        "pronunciation_cyrillic": "ду́ст",
+        "english": "friend",
+        "russian": "друг"
+      },
+      {
+        "tajik": "ҳамсоя",
+        "pronunciation_latin": "hamsoya",
+        "pronunciation_cyrillic": "ҳам-со́я",
+        "english": "neighbor",
+        "russian": "сосед"
+      },
+      {
+        "tajik": "кӯдак",
+        "pronunciation_latin": "kudak",
+        "pronunciation_cyrillic": "кӯ́дак",
+        "english": "child",
+        "russian": "ребёнок"
+      }
+    ],
+  
+    "weather_seasons": [
+      {
+        "tajik": "обу ҳаво",
+        "pronunciation_latin": "obu havo",
+        "pronunciation_cyrillic": "о-бу ҳаво́",
+        "english": "weather",
+        "russian": "погода"
+      },
+      {
+        "tajik": "борон",
+        "pronunciation_latin": "boron",
+        "pronunciation_cyrillic": "бо-ро́н",
+        "english": "rain",
+        "russian": "дождь"
+      },
+      {
+        "tajik": "барф",
+        "pronunciation_latin": "barf",
+        "pronunciation_cyrillic": "барф",
+        "english": "snow",
+        "russian": "снег"
+      },
+      {
+        "tajik": "тобистон",
+        "pronunciation_latin": "tobiston",
+        "pronunciation_cyrillic": "то-би-сто́н",
+        "english": "summer",
+        "russian": "лето"
+      },
+      {
+        "tajik": "зимистон",
+        "pronunciation_latin": "zimiston",
+        "pronunciation_cyrillic": "зи-ми-сто́н",
+        "english": "winter",
+        "russian": "зима"
+      }
+    ],
+  
