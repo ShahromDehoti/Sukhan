@@ -825,6 +825,293 @@
           "russian": "взбешённый"
         }
       ],
+      "verbs": [
+        {
+          "tajik": "рафтан",
+          "pronunciation_latin": "raftan",
+          "pronunciation_cyrillic": "раф-та́н",
+          "english": "to go",
+          "russian": "идти"
+        },
+        {
+          "tajik": "омадан",
+          "pronunciation_latin": "omadan",
+          "pronunciation_cyrillic": "о-ма-да́н",
+          "english": "to come",
+          "russian": "приходить"
+        },
+        {
+          "tajik": "дидан",
+          "pronunciation_latin": "didan",
+          "pronunciation_cyrillic": "ди-да́н",
+          "english": "to see",
+          "russian": "видеть"
+        },
+        {
+          "tajik": "фаҳмидан",
+          "pronunciation_latin": "fahmidan",
+          "pronunciation_cyrillic": "фаҳ-ми-да́н",
+          "english": "to understand",
+          "russian": "понимать"
+        },
+        {
+          "tajik": "гуфтан",
+          "pronunciation_latin": "guftan",
+          "pronunciation_cyrillic": "гуф-та́н",
+          "english": "to say",
+          "russian": "сказать"
+        },
+        {
+          "tajik": "хостан",
+          "pronunciation_latin": "khastan",
+          "pronunciation_cyrillic": "хос-та́н",
+          "english": "to want",
+          "russian": "хотеть"
+        },
+        {
+          "tajik": "хӯрдан",
+          "pronunciation_latin": "khurdan",
+          "pronunciation_cyrillic": "хӯр-да́н",
+          "english": "to eat",
+          "russian": "есть"
+        },
+        {
+          "tajik": "нӯшидан",
+          "pronunciation_latin": "nushidan",
+          "pronunciation_cyrillic": "нӯ-ши-да́н",
+          "english": "to drink",
+          "russian": "пить"
+        },
+        {
+          "tajik": "хобидан",
+          "pronunciation_latin": "khobidan",
+          "pronunciation_cyrillic": "хо-би-да́н",
+          "english": "to sleep",
+          "russian": "спать"
+        },
+        {
+          "tajik": "хондaн",
+          "pronunciation_latin": "khondan",
+          "pronunciation_cyrillic": "хон-да́н",
+          "english": "to read",
+          "russian": "читать"
+        },
+        {
+          "tajik": "навиштан",
+          "pronunciation_latin": "navishtan",
+          "pronunciation_cyrillic": "на-виш-та́н",
+          "english": "to write",
+          "russian": "писать"
+        },
+        {
+          "tajik": "кор кардан",
+          "pronunciation_latin": "kor kardan",
+          "pronunciation_cyrillic": "кор кар-да́н",
+          "english": "to work",
+          "russian": "работать"
+        },
+        {
+          "tajik": "хандидан",
+          "pronunciation_latin": "khandidan",
+          "pronunciation_cyrillic": "хан-ди-да́н",
+          "english": "to laugh",
+          "russian": "смеяться"
+        },
+        {
+          "tajik": "бозӣ кардан",
+          "pronunciation_latin": "bozi kardan",
+          "pronunciation_cyrillic": "бо-зи́ кар-да́н",
+          "english": "to play",
+          "russian": "играть"
+        },
+        {
+          "tajik": "пурсидан",
+          "pronunciation_latin": "pursidan",
+          "pronunciation_cyrillic": "пур-си-да́н",
+          "english": "to ask",
+          "russian": "спрашивать"
+        },
+        {
+          "tajik": "додан",
+          "pronunciation_latin": "dodan",
+          "pronunciation_cyrillic": "до-да́н",
+          "english": "to give",
+          "russian": "давать"
+        },
+        {
+          "tajик": "гирифтан",
+          "pronunciation_latin": "giriftan",
+          "pronunciation_cyrillic": "гириф-та́н",
+          "english": "to take",
+          "russian": "брать"
+        },
+        {
+          "tajik": "мешунавед",
+          "pronunciation_latin": "meshunaved",
+          "pronunciation_cyrillic": "ме-шу-на-ве́д",
+          "english": "to listen",
+          "russian": "слушать"
+        },
+        {
+          "tajik": "меомӯзед",
+          "pronunciation_latin": "meomuzed",
+          "pronunciation_cyrillic": "ме-о-мӯ-зе́д",
+          "english": "to learn",
+          "russian": "учиться"
+        },
+        {
+          "tajik": "зиндагонӣ кардан",
+          "pronunciation_latin": "zingagoni kardan",
+          "pronunciation_cyrillic": "зин-да-го-ні́ кар-да́н",
+          "english": "to live",
+          "russian": "жить"
+        }
+      ],
+    
+      "adjectives": [
+        {
+          "tajik": "калон",
+          "pronunciation_latin": "kalon",
+          "pronunciation_cyrillic": "ка-ло́н",
+          "english": "big",
+          "russian": "большой"
+        },
+        {
+          "tajik": "хурд",
+          "pronunciation_latin": "khurd",
+          "pronunciation_cyrillic": "хурд",
+          "english": "small",
+          "russian": "маленький"
+        },
+        {
+          "tajik": "нав",
+          "pronunciation_latin": "nav",
+          "pronunciation_cyrillic": "нав",
+          "english": "new",
+          "russian": "новый"
+        },
+        {
+          "tajik": "кӯҳна",
+          "pronunciation_latin": "kuhna",
+          "pronunciation_cyrillic": "кӯҳ-на́",
+          "english": "old (object)",
+          "russian": "старый"
+        },
+        {
+          "tajik": "зебо",
+          "pronunciation_latin": "zebo",
+          "pronunciation_cyrillic": "зе-бо́",
+          "english": "beautiful",
+          "russian": "красивый"
+        },
+        {
+          "tajik": "нозук",
+          "pronunciation_latin": "nozuk",
+          "pronunciation_cyrillic": "но-зу́к",
+          "english": "delicate / thin",
+          "russian": "нежный / тонкий"
+        },
+        {
+          "tajik": "дурахшон",
+          "pronunciation_latin": "durakhshon",
+          "pronunciation_cyrillic": "ду-рах-шо́н",
+          "english": "bright",
+          "russian": "яркий"
+        },
+        {
+          "tajik": "тоза",
+          "pronunciation_latin": "toza",
+          "pronunciation_cyrillic": "то-за́",
+          "english": "clean",
+          "russian": "чистый"
+        },
+        {
+          "tajik": "иффатнок",
+          "pronunciation_latin": "iffatnok",
+          "pronunciation_cyrillic": "иф-фат-но́к",
+          "english": "pure / virtuous",
+          "russian": "чистый / добродетельный"
+        },
+        {
+          "tajik": "баланд",
+          "pronunciation_latin": "baland",
+          "pronunciation_cyrillic": "ба-ланд",
+          "english": "tall / high",
+          "russian": "высокий"
+        },
+        {
+          "tajik": "паст",
+          "pronunciation_latin": "past",
+          "pronunciation_cyrillic": "паст",
+          "english": "low / short",
+          "russian": "низкий"
+        },
+        {
+          "tajik": "вазнин",
+          "pronunciation_latin": "vaznin",
+          "pronunciation_cyrillic": "ваз-ни́н",
+          "english": "heavy",
+          "russian": "тяжёлый"
+        },
+        {
+          "tajik": "сабук",
+          "pronunciation_latin": "sabuk",
+          "pronunciation_cyrillic": "са-бу́к",
+          "english": "light (weight)",
+          "russian": "лёгкий"
+        },
+        {
+          "tajik": "ширин",
+          "pronunciation_latin": "shirin",
+          "pronunciation_cyrillic": "ши-ри́н",
+          "english": "sweet",
+          "russian": "сладкий"
+        },
+        {
+          "tajik": "талх",
+          "pronunciation_latin": "talkh",
+          "pronunciation_cyrillic": "талх",
+          "english": "bitter",
+          "russian": "горький"
+        },
+        {
+          "tajik": "гарм",
+          "pronunciation_latin": "garm",
+          "pronunciation_cyrillic": "гарм",
+          "english": "warm / hot",
+          "russian": "тёплый / горячий"
+        },
+        {
+          "tajik": "сард",
+          "pronunciation_latin": "sard",
+          "pronunciation_cyrillic": "сард",
+          "english": "cold",
+          "russian": "холодный"
+        },
+        {
+          "tajik": "зуд",
+          "pronunciation_latin": "zud",
+          "pronunciation_cyrillic": "зуд",
+          "english": "fast / quick",
+          "russian": "быстрый"
+        },
+        {
+          "tajik": "оиниз",
+          "pronunciation_latin": "oiniz",
+          "pronunciation_cyrillic": "ой-низ",
+          "english": "smooth",
+          "russian": "гладкий"
+        },
+        {
+          "tajik": "дақиқ",
+          "pronunciation_latin": "daqiq",
+          "pronunciation_cyrillic": "да-қи́қ",
+          "english": "precise / exact",
+          "russian": "точный"
+        }
+      ]
+    }
+    
     
     
   
