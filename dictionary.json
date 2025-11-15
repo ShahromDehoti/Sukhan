@@ -255,4 +255,290 @@
         "russian": "зима"
       }
     ],
+    "colors": [
+        {
+          "tajik": "ранг",
+          "pronunciation_latin": "rang",
+          "pronunciation_cyrillic": "ранг",
+          "english": "color",
+          "russian": "цвет"
+        },
+        {
+          "tajik": "сафед",
+          "pronunciation_latin": "safed",
+          "pronunciation_cyrillic": "са-фе́д",
+          "english": "white",
+          "russian": "белый"
+        },
+        {
+          "tajik": "сиёҳ",
+          "pronunciation_latin": "siyoh",
+          "pronunciation_cyrillic": "си-ёҳ́",
+          "english": "black",
+          "russian": "чёрный"
+        },
+        {
+          "tajik": "сурх",
+          "pronunciation_latin": "surkh",
+          "pronunciation_cyrillic": "су́рх",
+          "english": "red",
+          "russian": "красный"
+        },
+        {
+          "tajik": "кабуд",
+          "pronunciation_latin": "kabud",
+          "pronunciation_cyrillic": "ка-бу́д",
+          "english": "blue",
+          "russian": "синий"
+        },
+        {
+          "tajik": "зард",
+          "pronunciation_latin": "zard",
+          "pronunciation_cyrillic": "зар́д",
+          "english": "yellow",
+          "russian": "жёлтый"
+        },
+        {
+          "tajik": "сабз",
+          "pronunciation_latin": "sabz",
+          "pronunciation_cyrillic": "сабз",
+          "english": "green",
+          "russian": "зелёный"
+        },
+        {
+          "tajik": "бунафш",
+          "pronunciation_latin": "bunafsh",
+          "pronunciation_cyrillic": "бу-нафш",
+          "english": "purple",
+          "russian": "фиолетовый"
+        },
+        {
+          "tajik": "норанҷӣ",
+          "pronunciation_latin": "noranji",
+          "pronunciation_cyrillic": "но-ран-ҷӣ́",
+          "english": "orange",
+          "russian": "оранжевый"
+        },
+        {
+          "tajik": "қаҳвагӣ",
+          "pronunciation_latin": "qahvagi",
+          "pronunciation_cyrillic": "қаҳ-ва-гі́",
+          "english": "brown",
+          "russian": "коричневый"
+        },
+        {
+          "tajik": "зарди равшан",
+          "pronunciation_latin": "zardi ravshan",
+          "pronunciation_cyrillic": "зар-ди рав-ша́н",
+          "english": "light yellow",
+          "russian": "светло-жёлтый"
+        },
+        {
+          "tajik": "кабуди равшан",
+          "pronunciation_latin": "kabudi ravshan",
+          "pronunciation_cyrillic": "ка-бу́ди рав-ша́н",
+          "english": "light blue",
+          "russian": "голубой"
+        },
+        {
+          "tajik": "гулобӣ",
+          "pronunciation_latin": "gulobi",
+          "pronunciation_cyrillic": "гу-ло́бӣ",
+          "english": "pink",
+          "russian": "розовый"
+        },
+        {
+          "tajik": "тиллоӣ",
+          "pronunciation_latin": "tilloi",
+          "pronunciation_cyrillic": "тил-ло́ӣ",
+          "english": "golden",
+          "russian": "золотой"
+        },
+        {
+          "tajik": "нуқрагӣ",
+          "pronunciation_latin": "noqragi",
+          "pronunciation_cyrillic": "ноқ-ра-гі́",
+          "english": "silver",
+          "russian": "серебряный"
+        },
+        {
+          "tajik": "арғувонӣ",
+          "pronunciation_latin": "arghuvoni",
+          "pronunciation_cyrillic": "ар-ғу-во́нӣ",
+          "english": "maroon",
+          "russian": "бордовый"
+        },
+        {
+          "tajik": "кремранг",
+          "pronunciation_latin": "kremrang",
+          "pronunciation_cyrillic": "крем-ранг",
+          "english": "cream-colored",
+          "russian": "кремовый"
+        },
+        {
+          "tajik": "сиёҳи равшан",
+          "pronunciation_latin": "siyohi ravshan",
+          "pronunciation_cyrillic": "си-ёҳ́и рав-ша́н",
+          "english": "light black / grayish black",
+          "russian": "тёмно-серый"
+        },
+        {
+          "tajik": "хокистарӣ",
+          "pronunciation_latin": "khokistari",
+          "pronunciation_cyrillic": "хо-ки-ста-ри́",
+          "english": "gray",
+          "russian": "серый"
+        },
+        {
+          "tajik": "ранги баҳорӣ",
+          "pronunciation_latin": "rangi bahori",
+          "pronunciation_cyrillic": "ран-ги ба-ҳo-рӣ́",
+          "english": "pastel / spring color",
+          "russian": "пастельный цвет"
+        }
+      ],
+    
+      "numbers": [
+        {
+          "tajik": "рақам",
+          "pronunciation_latin": "raqam",
+          "pronunciation_cyrillic": "ра-қам",
+          "english": "number",
+          "russian": "число"
+        },
+        {
+          "tajik": "як",
+          "pronunciation_latin": "yak",
+          "pronunciation_cyrillic": "як",
+          "english": "one",
+          "russian": "один"
+        },
+        {
+          "tajik": "ду",
+          "pronunciation_latin": "du",
+          "pronunciation_cyrillic": "ду",
+          "english": "two",
+          "russian": "два"
+        },
+        {
+          "tajik": "се",
+          "pronunciation_latin": "se",
+          "pronunciation_cyrillic": "се",
+          "english": "three",
+          "russian": "три"
+        },
+        {
+          "tajik": "чор",
+          "pronunciation_latin": "chor",
+          "pronunciation_cyrillic": "чор",
+          "english": "four",
+          "russian": "четыре"
+        },
+        {
+          "tajik": "панҷ",
+          "pronunciation_latin": "panj",
+          "pronunciation_cyrillic": "панҷ",
+          "english": "five",
+          "russian": "пять"
+        },
+        {
+          "tajik": "шаш",
+          "pronunciation_latin": "shash",
+          "pronunciation_cyrillic": "шаш",
+          "english": "six",
+          "russian": "шесть"
+        },
+        {
+          "tajik": "ҳафт",
+          "pronunciation_latin": "haft",
+          "pronunciation_cyrillic": "ҳафт",
+          "english": "seven",
+          "russian": "семь"
+        },
+        {
+          "tajik": "ҳашт",
+          "pronunciation_latin": "hasht",
+          "pronunciation_cyrillic": "ҳашт",
+          "english": "eight",
+          "russian": "восемь"
+        },
+        {
+          "tajik": "нуҳ",
+          "pronunciation_latin": "nuh",
+          "pronunciation_cyrillic": "нуҳ",
+          "english": "nine",
+          "russian": "девять"
+        },
+        {
+          "tajik": "даҳ",
+          "pronunciation_latin": "dah",
+          "pronunciation_cyrillic": "даҳ",
+          "english": "ten",
+          "russian": "десять"
+        },
+        {
+          "tajik": "бист",
+          "pronunciation_latin": "bist",
+          "pronunciation_cyrillic": "бист",
+          "english": "twenty",
+          "russian": "двадцать"
+        },
+        {
+          "tajik": "си",
+          "pronunciation_latin": "si",
+          "pronunciation_cyrillic": "си",
+          "english": "thirty",
+          "russian": "тридцать"
+        },
+        {
+          "tajik": "чиҳил",
+          "pronunciation_latin": "chihil",
+          "pronunciation_cyrillic": "чи-ҳил",
+          "english": "forty",
+          "russian": "сорок"
+        },
+        {
+          "tajik": "панҷоҳ",
+          "pronunciation_latin": "panjoh",
+          "pronunciation_cyrillic": "пан-ҷоҳ́",
+          "english": "fifty",
+          "russian": "пятьдесят"
+        },
+        {
+          "tajik": "сад",
+          "pronunciation_latin": "sad",
+          "pronunciation_cyrillic": "сад",
+          "english": "hundred",
+          "russian": "сто"
+        },
+        {
+          "tajik": "ҳазор",
+          "pronunciation_latin": "hazor",
+          "pronunciation_cyrillic": "ҳа-зо́р",
+          "english": "thousand",
+          "russian": "тысяча"
+        },
+        {
+          "tajik": "ним",
+          "pronunciation_latin": "nim",
+          "pronunciation_cyrillic": "ним",
+          "english": "half",
+          "russian": "половина"
+        },
+        {
+          "tajik": "камтар",
+          "pronunciation_latin": "kamtar",
+          "pronunciation_cyrillic": "кам-тар",
+          "english": "less",
+          "russian": "меньше"
+        },
+        {
+          "tajik": "зиёд",
+          "pronunciation_latin": "ziyod",
+          "pronunciation_cyrillic": "зи-ёд",
+          "english": "more / a lot",
+          "russian": "много / больше"
+        }
+      ],
+    
   
