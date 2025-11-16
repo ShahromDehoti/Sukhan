@@ -63,9 +63,9 @@ function App() {
         {/* Header */}
         <header className="app-header">
           <div>
-            <h1 className="app-title">Flashcards</h1>
+            <h1 className="app-title">Sukhan</h1>
             <p className="app-subtitle">
-              Practice Tajik with English & Russian translations.
+              Practice Tajik with English & Russian translations through flash cards.
             </p>
           </div>
         </header>
