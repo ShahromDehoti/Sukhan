@@ -66,8 +66,6 @@ function App() {
     );
   }
 
-  const progress = ((index + 1) / words.length) * 100;
-
   return (
     <div className="app-root">
       <div className="app-card">
@@ -98,19 +96,6 @@ function App() {
               {label}
             </button>
           ))}
-        </div>
-
-        {/* Progress */}
-        <div className="progress-row">
-          <span className="progress-text">
-            {CATEGORY_LABELS[category]} · {index + 1} / {words.length}
-          </span>
-          <div className="progress-bar">
-            <div
-              className="progress-bar-fill"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
         </div>
 
         {/* Toggles */}
@@ -184,6 +169,11 @@ function App() {
           <button className="primary-button" onClick={handlePrev}>
             ← Previous
           </button>
+
+          <span className="nav-counter">
+            {index + 1} / {words.length}
+          </span>
+
           <button className="primary-button" onClick={handleNext}>
             Next →
           </button>
