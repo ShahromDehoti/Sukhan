@@ -59,88 +59,93 @@ function App() {
 
   return (
     <div className="app-root">
-      <div className="app-card">
-        {/* Header */}
-        <header className="app-header">
-          <div>
-            <h1 className="app-title">Sukhan</h1>
-            <p className="app-subtitle">
-              Practice Tajik with English & Russian translations through flash cards.
-            </p>
+      <div className="app-wrapper">
+        <div className="app-card">
+          {/* Header */}
+          <header className="app-header">
+            <div>
+              <h1 className="app-title">Sukhan</h1>
+              <p className="app-subtitle">
+                Practice Tajik with English & Russian translations through flash cards.
+              </p>
+            </div>
+          </header>
+
+          {/* Category pills */}
+          <div className="category-row">
+            {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
+              <button
+                key={key}
+                className={
+                  "category-pill" +
+                  (key === category ? " category-pill--active" : "")
+                }
+                onClick={() => handleCategoryChange(key)}
+              >
+                {label}
+              </button>
+            ))}
           </div>
-        </header>
 
-        {/* Category pills */}
-        <div className="category-row">
-          {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
-            <button
-              key={key}
-              className={
-                "category-pill" +
-                (key === category ? " category-pill--active" : "")
-              }
-              onClick={() => handleCategoryChange(key)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+          {/* Flashcard */}
+          <div
+            className={"flashcard" + (showBack ? " flashcard--flipped" : "")}
+            onClick={() => setShowBack((s) => !s)}
+          >
+            <div className="flashcard-inner">
+              {/* FRONT */}
+              <div className="flashcard-face flashcard-front">
+                <div className="flashcard-tajik">{current.tajik}</div>
 
-        {/* Flashcard */}
-        <div
-          className={"flashcard" + (showBack ? " flashcard--flipped" : "")}
-          onClick={() => setShowBack((s) => !s)}
-        >
-          <div className="flashcard-inner">
-            {/* FRONT */}
-            <div className="flashcard-face flashcard-front">
-              <div className="flashcard-tajik">{current.tajik}</div>
+                  <div className="flashcard-pron-latin">
+                    {current.pronunciation_latin}
+                  </div>
 
-                <div className="flashcard-pron-latin">
-                  {current.pronunciation_latin}
-                </div>
+                  <div className="flashcard-pron-cyr">
+                    {current.pronunciation_cyrillic}
+                  </div>
 
-                <div className="flashcard-pron-cyr">
-                  {current.pronunciation_cyrillic}
-                </div>
+                {!showBack && (
+                  <div className="flashcard-hint">
+                    Click to show translations
+                  </div>
+                )}
+              </div>
 
-              {!showBack && (
+              {/* BACK */}
+              <div className="flashcard-face flashcard-back">
+              <div className="flashcard-translation">
+                English: <strong>{current.english}</strong>
+              </div>
+
+              <div className="flashcard-translation">
+                Russian: <strong>{current.russian}</strong>
+              </div>
                 <div className="flashcard-hint">
-                  Click to show translations
+                  Click to hide translations
                 </div>
-              )}
-            </div>
-
-            {/* BACK */}
-            <div className="flashcard-face flashcard-back">
-            <div className="flashcard-translation">
-              English: <strong>{current.english}</strong>
-            </div>
-
-            <div className="flashcard-translation">
-              Russian: <strong>{current.russian}</strong>
-            </div>
-              <div className="flashcard-hint">
-                Click to hide translations
               </div>
             </div>
           </div>
+
+          {/* Navigation */}
+          <div className="nav-row">
+            <button className="primary-button" onClick={handlePrev}>
+              ← Previous
+            </button>
+
+            <span className="nav-counter">
+              {index + 1} / {words.length}
+            </span>
+
+            <button className="primary-button" onClick={handleNext}>
+              Next →
+            </button>
+          </div>
         </div>
-
-        {/* Navigation */}
-        <div className="nav-row">
-          <button className="primary-button" onClick={handlePrev}>
-            ← Previous
-          </button>
-
-          <span className="nav-counter">
-            {index + 1} / {words.length}
-          </span>
-
-          <button className="primary-button" onClick={handleNext}>
-            Next →
-          </button>
-        </div>
+        <footer className="global-footer">
+            © {new Date().getFullYear()} Shahrom Dehoti
+          </footer>
       </div>
     </div>
   );
