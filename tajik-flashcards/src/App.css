@@ -1,0 +1,256 @@
+/* src/App.css */
+
+:root {
+    color-scheme: light;
+  }
+  
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+    background: radial-gradient(circle at top, #e0f2fe, #f9fafb 55%);
+  }
+  
+  /* Root layout */
+  .app-root {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  
+  .app-card {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 18px 60px rgba(15, 23, 42, 0.15);
+    padding: 24px 24px 28px;
+    box-sizing: border-box;
+  }
+  
+  /* Header */
+  .app-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .app-title {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 0.02em;
+  }
+  
+  .app-subtitle {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .ghost-button {
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #374151;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  }
+  
+  .ghost-button:hover {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+    transform: translateY(-1px);
+  }
+  
+  /* Category pills */
+  .category-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0 16px;
+  }
+  
+  .category-pill {
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #4b5563;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  
+  .category-pill--active {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: white;
+  }
+  
+  /* Progress */
+  .progress-row {
+    margin-bottom: 12px;
+  }
+  
+  .progress-text {
+    display: block;
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 4px;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 5px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    overflow: hidden;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #22c55e);
+    border-radius: 999px;
+  }
+  
+  /* Toggles */
+  .toggle-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  
+  .toggle-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #4b5563;
+  }
+  
+  /* Flashcard */
+  .flashcard {
+    position: relative;
+    margin: 0 auto 18px;
+    max-width: 520px;
+    min-height: 180px;
+    padding: 26px 20px 22px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #eef2ff, #e0f2fe);
+    box-shadow: 0 16px 40px rgba(75, 85, 99, 0.35);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  
+  .flashcard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 45px rgba(55, 65, 81, 0.35);
+  }
+  
+  .flashcard-front,
+  .flashcard-back {
+    text-align: center;
+  }
+  
+  .flashcard-tajik {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  
+  .flashcard-pron-latin {
+    font-size: 16px;
+    color: #111827;
+  }
+  
+  .flashcard-pron-cyr {
+    font-size: 14px;
+    color: #374151;
+    margin-top: 2px;
+  }
+  
+  .flashcard-hint {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  .flashcard-back {
+    margin-top: 10px;
+  }
+  
+  .flashcard-translation {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 15px;
+    padding: 4px 0;
+    color: #111827;
+  }
+  
+  .flashcard-translation .label {
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  /* Navigation buttons */
+  .nav-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  
+  .primary-button {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+    transition: background 0.15s, transform 0.08s, box-shadow 0.08s;
+  }
+  
+  .primary-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.4);
+  }
+  
+  .primary-button:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 640px) {
+    .app-card {
+      border-radius: 18px;
+      padding: 18px 14px 22px;
+    }
+  
+    .flashcard {
+      max-width: 100%;
+    }
+  
+    .category-row {
+      max-height: 80px;
+      overflow-y: auto;
+    }
+  }
+  

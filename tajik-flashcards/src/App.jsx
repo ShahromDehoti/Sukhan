@@ -1,6 +1,7 @@
 // src/App.jsx
 import { useState, useMemo } from "react";
 import data from "./data/dictionary.json";
+import "./App.css";
 
 const CATEGORY_LABELS = {
   greetings: "Greetings",
@@ -24,161 +25,163 @@ function App() {
 
   const words = useMemo(() => {
     const arr = data[category] || [];
-    // Simple copy so we can shuffle if we want later
     return [...arr];
   }, [category]);
 
   const current = words[index] || null;
 
   const handleNext = () => {
+    if (!words.length) return;
     setShowBack(false);
     setIndex((prev) => (prev + 1) % words.length);
   };
 
   const handlePrev = () => {
+    if (!words.length) return;
     setShowBack(false);
-    setIndex((prev) =>
-      prev === 0 ? words.length - 1 : prev - 1
-    );
+    setIndex((prev) => (prev - 1 + words.length) % words.length);
   };
 
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
+  const handleCategoryChange = (key) => {
+    setCategory(key);
     setIndex(0);
     setShowBack(false);
   };
 
-  const shuffleWords = () => {
-    // Very basic shuffle: randomize index only (keeps JSON static)
+  const shuffleOne = () => {
+    if (!words.length) return;
     const randomIndex = Math.floor(Math.random() * words.length);
     setIndex(randomIndex);
     setShowBack(false);
   };
 
   if (!current) {
-    return <div style={{ padding: 24 }}>No words in this category.</div>;
+    return (
+      <div className="app-root">
+        <div className="app-card">
+          <h1 className="app-title">Tajik Flashcards</h1>
+          <p>No words in this category yet.</p>
+        </div>
+      </div>
+    );
   }
 
+  const progress = ((index + 1) / words.length) * 100;
+
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        fontFamily: "system-ui, -apple-system, BlinkMacSystemFont",
-        background: "#f5f5f7",
-        padding: "24px"
-      }}
-    >
-      <h1 style={{ marginBottom: 8 }}>Tajik Flashcards</h1>
-      <p style={{ marginBottom: 24, color: "#555" }}>
-        Practice Tajik vocabulary with English & Russian translations.
-      </p>
-
-      {/* Top controls */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "12px",
-          marginBottom: "24px",
-          alignItems: "center"
-        }}
-      >
-        <label>
-          Category:{" "}
-          <select value={category} onChange={handleCategoryChange}>
-            {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <button onClick={shuffleWords}>Shuffle</button>
-
-        <label style={{ marginLeft: "auto" }}>
-          <input
-            type="checkbox"
-            checked={showLatin}
-            onChange={() => setShowLatin((v) => !v)}
-          />
-          {" "}Show Latin
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={showCyrillic}
-            onChange={() => setShowCyrillic((v) => !v)}
-          />
-          {" "}Show Cyrillic
-        </label>
-      </div>
-
-      {/* Flashcard */}
-      <div
-        onClick={() => setShowBack((s) => !s)}
-        style={{
-          maxWidth: 480,
-          margin: "0 auto 24px",
-          padding: "32px 24px",
-          borderRadius: "16px",
-          background: "white",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-          cursor: "pointer",
-          textAlign: "center",
-          transition: "transform 0.15s ease",
-        }}
-      >
-        <div style={{ fontSize: 14, color: "#888", marginBottom: 8 }}>
-          {CATEGORY_LABELS[category]} — {index + 1} / {words.length}
-        </div>
-
-        {/* Front: Tajik */}
-        <div style={{ marginBottom: 16 }}>
-          <div style={{ fontSize: 32, marginBottom: 8 }}>{current.tajik}</div>
-
-          {showLatin && (
-            <div style={{ fontSize: 16, color: "#444" }}>
-              {current.pronunciation_latin}
-            </div>
-          )}
-          {showCyrillic && (
-            <div style={{ fontSize: 14, color: "#777", marginTop: 4 }}>
-              {current.pronunciation_cyrillic}
-            </div>
-          )}
-        </div>
-
-        {/* Back: translations */}
-        {showBack ? (
+    <div className="app-root">
+      <div className="app-card">
+        {/* Header */}
+        <header className="app-header">
           <div>
-            <div style={{ marginBottom: 4 }}>
-              <strong>English:</strong> {current.english}
-            </div>
-            <div>
-              <strong>Russian:</strong> {current.russian}
-            </div>
-            <div style={{ marginTop: 12, fontSize: 12, color: "#999" }}>
-              (Tap to flip back)
-            </div>
+            <h1 className="app-title">Tajik Flashcards</h1>
+            <p className="app-subtitle">
+              Practice Tajik with English & Russian translations.
+            </p>
           </div>
-        ) : (
-          <div style={{ fontSize: 12, color: "#999" }}>
-            Tap to show translations
-          </div>
-        )}
-      </div>
+          <button className="ghost-button" onClick={shuffleOne}>
+            🎲 Random
+          </button>
+        </header>
 
-      {/* Navigation buttons */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "12px"
-        }}
-      >
-        <button onClick={handlePrev}>Previous</button>
-        <button onClick={handleNext}>Next</button>
+        {/* Category pills */}
+        <div className="category-row">
+          {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
+            <button
+              key={key}
+              className={
+                "category-pill" +
+                (key === category ? " category-pill--active" : "")
+              }
+              onClick={() => handleCategoryChange(key)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {/* Progress */}
+        <div className="progress-row">
+          <span className="progress-text">
+            {CATEGORY_LABELS[category]} · {index + 1} / {words.length}
+          </span>
+          <div className="progress-bar">
+            <div
+              className="progress-bar-fill"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Toggles */}
+        <div className="toggle-row">
+          <label className="toggle-item">
+            <input
+              type="checkbox"
+              checked={showLatin}
+              onChange={() => setShowLatin((v) => !v)}
+            />
+            <span>Latin pronunciation</span>
+          </label>
+          <label className="toggle-item">
+            <input
+              type="checkbox"
+              checked={showCyrillic}
+              onChange={() => setShowCyrillic((v) => !v)}
+            />
+            <span>Cyrillic pronunciation</span>
+          </label>
+        </div>
+
+        {/* Flashcard */}
+        <div
+          className={"flashcard" + (showBack ? " flashcard--flipped" : "")}
+          onClick={() => setShowBack((s) => !s)}
+        >
+          <div className="flashcard-front">
+            <div className="flashcard-tajik">{current.tajik}</div>
+
+            {showLatin && (
+              <div className="flashcard-pron-latin">
+                {current.pronunciation_latin}
+              </div>
+            )}
+
+            {showCyrillic && (
+              <div className="flashcard-pron-cyr">
+                {current.pronunciation_cyrillic}
+              </div>
+            )}
+
+            {!showBack && (
+              <div className="flashcard-hint">Click to show translations</div>
+            )}
+          </div>
+
+          {showBack && (
+            <div className="flashcard-back">
+              <div className="flashcard-translation">
+                <span className="label">English</span>
+                <span>{current.english}</span>
+              </div>
+              <div className="flashcard-translation">
+                <span className="label">Russian</span>
+                <span>{current.russian}</span>
+              </div>
+              <div className="flashcard-hint">Click to hide translations</div>
+            </div>
+          )}
+        </div>
+
+        {/* Navigation */}
+        <div className="nav-row">
+          <button className="primary-button" onClick={handlePrev}>
+            ← Previous
+          </button>
+          <button className="primary-button" onClick={handleNext}>
+            Next →
+          </button>
+        </div>
       </div>
     </div>
   );
