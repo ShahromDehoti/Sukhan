@@ -141,6 +141,10 @@
   /* Back is rotated 180deg so it shows when inner flips */
   .flashcard-back {
     transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   /* Existing text styles still work */
@@ -167,14 +171,16 @@
   }
   
   .flashcard-translation {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    font-size: 15px;
-    padding: 4px 0;
+    font-size: 17px;
     color: #111827;
+    margin: 6px 0;
+    text-align: center;        /* <-- centers the text */
   }
+  
+  .flashcard-translation strong {
+    font-weight: 600;
+    margin-left: 4px;
+  }  
   
   .flashcard-translation .label {
     font-weight: 600;
