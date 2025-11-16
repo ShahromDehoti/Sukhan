@@ -48,13 +48,6 @@ function App() {
     setShowBack(false);
   };
 
-  const shuffleOne = () => {
-    if (!words.length) return;
-    const randomIndex = Math.floor(Math.random() * words.length);
-    setIndex(randomIndex);
-    setShowBack(false);
-  };
-
   if (!current) {
     return (
       <div className="app-root">
@@ -72,14 +65,11 @@ function App() {
         {/* Header */}
         <header className="app-header">
           <div>
-            <h1 className="app-title">Tajik Flashcards</h1>
+            <h1 className="app-title">Flashcards</h1>
             <p className="app-subtitle">
               Practice Tajik with English & Russian translations.
             </p>
           </div>
-          <button className="ghost-button" onClick={shuffleOne}>
-            🎲 Random
-          </button>
         </header>
 
         {/* Category pills */}

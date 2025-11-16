@@ -51,26 +51,6 @@
     color: #6b7280;
   }
   
-  .ghost-button {
-    border: 1px solid #e5e7eb;
-    background: #f9fafb;
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-size: 13px;
-    cursor: pointer;
-    color: #374151;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.15s, border-color 0.15s, transform 0.1s;
-  }
-  
-  .ghost-button:hover {
-    background: #eef2ff;
-    border-color: #c7d2fe;
-    transform: translateY(-1px);
-  }
-  
   /* Category pills */
   .category-row {
     display: flex;
