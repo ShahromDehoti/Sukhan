@@ -138,28 +138,32 @@ function App() {
           className={"flashcard" + (showBack ? " flashcard--flipped" : "")}
           onClick={() => setShowBack((s) => !s)}
         >
-          <div className="flashcard-front">
-            <div className="flashcard-tajik">{current.tajik}</div>
+          <div className="flashcard-inner">
+            {/* FRONT */}
+            <div className="flashcard-face flashcard-front">
+              <div className="flashcard-tajik">{current.tajik}</div>
 
-            {showLatin && (
-              <div className="flashcard-pron-latin">
-                {current.pronunciation_latin}
-              </div>
-            )}
+              {showLatin && (
+                <div className="flashcard-pron-latin">
+                  {current.pronunciation_latin}
+                </div>
+              )}
 
-            {showCyrillic && (
-              <div className="flashcard-pron-cyr">
-                {current.pronunciation_cyrillic}
-              </div>
-            )}
+              {showCyrillic && (
+                <div className="flashcard-pron-cyr">
+                  {current.pronunciation_cyrillic}
+                </div>
+              )}
 
-            {!showBack && (
-              <div className="flashcard-hint">Click to show translations</div>
-            )}
-          </div>
+              {!showBack && (
+                <div className="flashcard-hint">
+                  Click to show translations
+                </div>
+              )}
+            </div>
 
-          {showBack && (
-            <div className="flashcard-back">
+            {/* BACK */}
+            <div className="flashcard-face flashcard-back">
               <div className="flashcard-translation">
                 <span className="label">English</span>
                 <span>{current.english}</span>
@@ -168,9 +172,11 @@ function App() {
                 <span className="label">Russian</span>
                 <span>{current.russian}</span>
               </div>
-              <div className="flashcard-hint">Click to hide translations</div>
+              <div className="flashcard-hint">
+                Click to hide translations
+              </div>
             </div>
-          )}
+          </div>
         </div>
 
         {/* Navigation */}

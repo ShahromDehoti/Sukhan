@@ -139,30 +139,57 @@
   }
   
   /* Flashcard */
-  .flashcard {
+/* Flashcard container: holds perspective */
+.flashcard {
     position: relative;
     margin: 0 auto 18px;
     max-width: 520px;
-    min-height: 180px;
+    perspective: 1000px;
+  }
+  
+  /* The rotating inner card */
+  .flashcard-inner {
+    position: relative;
+    width: 100%;
+    min-height: 190px;
     padding: 26px 20px 22px;
     border-radius: 22px;
     background: linear-gradient(135deg, #eef2ff, #e0f2fe);
     box-shadow: 0 16px 40px rgba(75, 85, 99, 0.35);
+    transform-style: preserve-3d;
+    transition: transform 0.75s ease;
     cursor: pointer;
-    overflow: hidden;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
   
-  .flashcard:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 20px 45px rgba(55, 65, 81, 0.35);
+  /* When flipped, rotate the inner card */
+  .flashcard.flashcard--flipped .flashcard-inner {
+    transform: rotateY(180deg);
   }
   
-  .flashcard-front,
-  .flashcard-back {
+  /* Common face styles */
+  .flashcard-face {
+    position: absolute;
+    inset: 0;
+    padding: 26px 20px 22px; /* match inner padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
     text-align: center;
   }
   
+  /* Front stays normal orientation */
+  .flashcard-front {
+    /* no extra transform */
+  }
+  
+  /* Back is rotated 180deg so it shows when inner flips */
+  .flashcard-back {
+    transform: rotateY(180deg);
+  }
+  
+  /* Existing text styles still work */
   .flashcard-tajik {
     font-size: 32px;
     margin-bottom: 8px;
@@ -185,11 +212,8 @@
     color: #6b7280;
   }
   
-  .flashcard-back {
-    margin-top: 10px;
-  }
-  
   .flashcard-translation {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -202,7 +226,12 @@
     font-weight: 600;
     color: #374151;
   }
+
+  .flashcard:hover .flashcard-inner {
+    box-shadow: 0 20px 45px rgba(55, 65, 81, 0.35);
+  }
   
+    
   /* Navigation buttons */
   .nav-row {
     display: flex;
