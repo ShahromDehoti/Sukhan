@@ -278,5 +278,129 @@
       max-height: 80px;
       overflow-y: auto;
     }
+
+    /* --- Feedback Button --- */
+    .feedback-button {
+        background: #3b82f6;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    
+    .feedback-button:hover {
+        background: #2563eb;
+    }
+    
+    /* --- Modal Overlay --- */
+    .feedback-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        backdrop-filter: blur(3px);
+    }
+    
+    /* --- Modal Box --- */
+    .feedback-modal {
+        background: white;
+        width: 90%;
+        max-width: 420px;
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        animation: fadeInScale 0.2s ease-out;
+    }
+    
+    @keyframes fadeInScale {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    
+    /* --- Title --- */
+    .feedback-title {
+        margin-bottom: 16px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #111827;
+        text-align: center;
+    }
+    
+    /* --- Text Input Wrapper --- */
+    .feedback-input-wrapper {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    
+    /* Placeholder that behaves like a real floating label */
+    .feedback-placeholder {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        color: #9ca3af;
+        pointer-events: none;
+    }
+    
+    /* Textarea */
+    .feedback-textarea {
+        width: 100%;
+        height: 120px;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #d1d5db;
+        resize: none;
+        font-size: 14px;
+        outline: none;
+    }
+    
+    .feedback-textarea:focus {
+        border-color: #2563eb;
+    }
+    
+    /* --- Buttons --- */
+    .feedback-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+    
+    .feedback-cancel,
+    .feedback-send {
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+    }
+    
+    .feedback-cancel {
+        background: #e5e7eb;
+        color: #374151;
+    }
+    
+    .feedback-cancel:hover {
+        background: #d1d5db;
+    }
+    
+    .feedback-send {
+        background: #2563eb;
+        color: white;
+    }
+    
+    .feedback-send:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+    }
+    
+    .feedback-send:hover:not(:disabled) {
+        background: #1e40af;
+    }
+  
   }
   

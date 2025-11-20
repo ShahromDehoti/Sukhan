@@ -152,10 +152,8 @@ function App() {
               Next →
             </button>
           </div>
-        </div>
-        <footer className="global-footer">
-            © {new Date().getFullYear()} Shahrom Dehoti
-          </footer>
+
+          {/* Feedback modal */}
           {isFeedbackOpen && (
             <div className="feedback-overlay">
               <div className="feedback-modal">
@@ -201,6 +199,10 @@ function App() {
               </div>
             </div>
           )}
+        </div>
+        <footer className="global-footer">
+          © {new Date().getFullYear()} Shahrom Dehoti
+        </footer>
       </div>
     </div>
   );
