@@ -20,6 +20,9 @@ function App() {
   const [category, setCategory] = useState("greetings");
   const [index, setIndex] = useState(0);
   const [showBack, setShowBack] = useState(false);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+  const [feedbackText, setFeedbackText] = useState("");
+
 
   const words = useMemo(() => {
     const arr = data[category] || [];
@@ -68,6 +71,13 @@ function App() {
               <p className="app-subtitle">
                 Practice Tajik with English & Russian translations through flash cards.
               </p>
+
+              <button
+                className="feedback-button"
+                onClick={() => setIsFeedbackOpen(true)}
+              >
+                Leave Feedback
+              </button>
             </div>
           </header>
 
@@ -146,6 +156,51 @@ function App() {
         <footer className="global-footer">
             © {new Date().getFullYear()} Shahrom Dehoti
           </footer>
+          {isFeedbackOpen && (
+            <div className="feedback-overlay">
+              <div className="feedback-modal">
+                <h2 className="feedback-title">Feedback</h2>
+
+                <div className="feedback-input-wrapper">
+                  {!feedbackText && (
+                    <div className="feedback-placeholder">
+                      How can I improve your experience?
+                    </div>
+                  )}
+                  <textarea
+                    className="feedback-textarea"
+                    value={feedbackText}
+                    onChange={(e) => setFeedbackText(e.target.value)}
+                  />
+                </div>
+
+                <div className="feedback-buttons">
+                  <button
+                    className="feedback-cancel"
+                    onClick={() => {
+                      setFeedbackText("");
+                      setIsFeedbackOpen(false);
+                    }}
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    className="feedback-send"
+                    onClick={() => {
+                      // TODO: Wire up Google Form submission
+                      alert("Feedback sent! Thank you.");
+                      setFeedbackText("");
+                      setIsFeedbackOpen(false);
+                    }}
+                    disabled={!feedbackText.trim()}
+                  >
+                    Send
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
       </div>
     </div>
   );
