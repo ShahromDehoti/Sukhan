@@ -66,19 +66,18 @@ function App() {
         <div className="app-card">
           {/* Header */}
           <header className="app-header">
-            <div>
+            <div className="header-text">
               <h1 className="app-title">Sukhan</h1>
               <p className="app-subtitle">
                 Practice Tajik with English & Russian translations through flash cards.
               </p>
-
+            </div>
               <button
-                className="feedback-button"
+                className="ghost-button"
                 onClick={() => setIsFeedbackOpen(true)}
               >
-                Leave Feedback
+                💬 Leave Feedback
               </button>
-            </div>
           </header>
 
           {/* Category pills */}
