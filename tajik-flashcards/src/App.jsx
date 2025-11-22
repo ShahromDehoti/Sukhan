@@ -186,6 +186,15 @@ function App() {
                   <button
                     className="feedback-send"
                     onClick={() => {
+                      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfWJt8ElHb8IKtoDTLpHllvTAiy_UA27cJlRwLJzdFGYMqDgw/formResponse", {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: {
+                          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                        },
+                        body: `entry.358480867=${encodeURIComponent(feedbackText)}`
+                      });
+                    
                       alert("Feedback sent! Thank you.");
                       setFeedbackText("");
                       setIsFeedbackOpen(false);
