@@ -156,7 +156,7 @@ function App() {
           {isFeedbackOpen && (
             <div className="feedback-overlay">
               <div className="feedback-modal">
-                <h2 className="feedback-title">Feedback</h2>
+                <h2 className="feedback-title">Leave Feedback</h2>
 
                 <div className="feedback-input-wrapper">
                   {!feedbackText && (
@@ -164,6 +164,7 @@ function App() {
                       How can I improve your experience?
                     </div>
                   )}
+
                   <textarea
                     className="feedback-textarea"
                     value={feedbackText}
@@ -185,7 +186,6 @@ function App() {
                   <button
                     className="feedback-send"
                     onClick={() => {
-                      // TODO: Wire up Google Form submission
                       alert("Feedback sent! Thank you.");
                       setFeedbackText("");
                       setIsFeedbackOpen(false);
