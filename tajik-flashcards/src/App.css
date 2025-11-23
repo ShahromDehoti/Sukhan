@@ -11,6 +11,10 @@
     background: radial-gradient(circle at top, #e0f2fe, #f9fafb 55%);
   }
   
+  html, body {
+    overflow-x: hidden;
+  }
+  
   /* Root layout */
   .app-root {
     min-height: 100vh;
@@ -260,6 +264,7 @@
 /* Flashcard container: holds perspective */
 .flashcard {
     position: relative;
+    width: 100%;
     margin: 0 auto 18px;
     max-width: 520px;
     perspective: 1000px;
@@ -270,10 +275,11 @@
     position: relative;
     width: 100%;
     min-height: 190px;
-    padding: 26px 20px 22px;
+    padding: 20px 16px;
     border-radius: 22px;
     background: linear-gradient(135deg, #eef2ff, #e0f2fe);
     box-shadow: 0 16px 40px rgba(75, 85, 99, 0.35);
+    box-sizing: border-box;
     transform-style: preserve-3d;
     transition: transform 0.75s ease;
     cursor: pointer;
@@ -481,5 +487,26 @@
       max-height: 80px;
       overflow-y: auto;
     }
+
+  @media (max-width: 480px) {
+    .flashcard {
+      max-width: 100%;
+    }
+  
+    .flashcard-inner {
+      padding: 18px 14px;
+    }
+  
+    .flashcard-tajik {
+      font-size: 28px;
+      word-break: break-word;
+    }
+  
+    .flashcard-pron-latin,
+    .flashcard-pron-cyr {
+      font-size: 14px;
+    }
+  }
+    
   }
   
