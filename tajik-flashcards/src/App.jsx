@@ -50,6 +50,23 @@ function App() {
     setShowBack(false);
   };
 
+  const speak = (text) => {
+    if (!window.speechSynthesis) return;
+  
+    const utterance = new SpeechSynthesisUtterance(text);
+  
+    const voices = window.speechSynthesis.getVoices();
+    const russianVoice = voices.find((v) => v.lang.startsWith("ru"));
+  
+    if (russianVoice) utterance.voice = russianVoice;
+  
+    utterance.rate = 0.8;
+    utterance.pitch = 1;
+  
+    window.speechSynthesis.speak(utterance);
+  };
+  
+
   if (!current) {
     return (
       <div className="app-root">
@@ -77,7 +94,7 @@ function App() {
                 className="ghost-button"
                 onClick={() => setIsFeedbackOpen(true)}
               >
-                💬 Leave Feedback
+                Leave Feedback
               </button>
           </header>
 
@@ -106,7 +123,12 @@ function App() {
               {/* FRONT */}
               <div className="flashcard-face flashcard-front">
                 <div className="flashcard-tajik">{current.tajik}</div>
-                
+                {/* Pronounce button */}
+                <button className="audio-button" onClick={(e) => {
+                  e.stopPropagation();
+                  speak(current.tajik)}}>
+                  Pronounce
+                </button>
 
                   <div className="flashcard-pron-latin">
                     {current.pronunciation_latin}

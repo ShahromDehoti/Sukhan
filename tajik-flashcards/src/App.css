@@ -395,6 +395,25 @@
       transform: translateX(-50%) translateY(10px) scale(0.95);
     }
 }
+
+  /* Audio button */
+  .audio-button {
+    margin-top: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    font-size: 13px;
+    cursor: pointer;
+    color: #374151;
+    transition: background 0.15s, transform 0.1s;
+  }
+  
+  .audio-button:hover {
+    background: #e0e7ff;
+    transform: translateY(-1px);
+  }
+  
   
     
   /* Navigation buttons */
