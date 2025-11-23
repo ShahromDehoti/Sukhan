@@ -22,6 +22,7 @@ function App() {
   const [showBack, setShowBack] = useState(false);
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [feedbackText, setFeedbackText] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
 
   const words = useMemo(() => {
@@ -105,6 +106,7 @@ function App() {
               {/* FRONT */}
               <div className="flashcard-face flashcard-front">
                 <div className="flashcard-tajik">{current.tajik}</div>
+                
 
                   <div className="flashcard-pron-latin">
                     {current.pronunciation_latin}
@@ -195,9 +197,11 @@ function App() {
                         body: `entry.358480867=${encodeURIComponent(feedbackText)}`
                       });
                     
-                      alert("Feedback sent! Thank you.");
                       setFeedbackText("");
                       setIsFeedbackOpen(false);
+
+                      setShowToast(true);
+                      setTimeout(() => setShowToast(false), 3000);
                     }}
                     disabled={!feedbackText.trim()}
                   >
@@ -205,6 +209,11 @@ function App() {
                   </button>
                 </div>
               </div>
+            </div>
+          )}
+          {showToast && (
+            <div className="toast">
+              Feedback sent! Thank you 🙌
             </div>
           )}
         </div>

@@ -354,6 +354,47 @@
   .flashcard:hover .flashcard-inner {
     box-shadow: 0 20px 45px rgba(55, 65, 81, 0.35);
   }
+
+  /* Toast */
+    
+  .toast {
+    position: absolute;
+    top: 20px;               /* raises it above the flashcard */
+    left: 50%;
+    transform: translateX(-50%);
+  
+    z-index: 5000;
+  
+    background: rgba(16, 185, 129, 0.95);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+  
+    animation: toast-pop 0.25s ease-out forwards,
+               toast-fade 0.25s ease-in 2.5s forwards;
+  }  
+
+  @keyframes toast-pop {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(10px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+  }
+
+  @keyframes toast-fade {
+    to {
+      opacity: 0;
+      transform: translateX(-50%) translateY(10px) scale(0.95);
+    }
+}
   
     
   /* Navigation buttons */
@@ -421,6 +462,5 @@
       max-height: 80px;
       overflow-y: auto;
     }
-  
   }
   
