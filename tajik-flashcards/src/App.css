@@ -244,10 +244,6 @@
     color: white;
   }
 
-  .category-dropdown {
-    display: none;
-  }
-  
   /* Toggles */
   .toggle-row {
     display: flex;
@@ -475,10 +471,14 @@
     transform: translateY(0);
     box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
   }
+
+  .category-dropdown {
+    display: none;
+  }
   
   /* Responsive tweaks */
   @media (max-width: 640px) {
-    
+
     .category-row {
       display: none; /* hide pills */
     }
@@ -496,7 +496,7 @@
       overflow-y: auto;
     }
 
-  @media (max-width: 480px) {
+  /* @media (max-width: 480px) {
     .flashcard {
       max-width: 100%;
     }
@@ -514,7 +514,7 @@
     .flashcard-pron-cyr {
       font-size: 14px;
     }
-  }
+  } */
     
   }
   
