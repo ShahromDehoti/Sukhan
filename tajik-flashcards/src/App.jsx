@@ -113,6 +113,17 @@ function App() {
               </button>
             ))}
           </div>
+          
+          {/* Mobile Dropdown */}
+          <select
+            className="category-dropdown"
+            value={category}
+            onChange={(e) => handleCategoryChange(e.target.value)}
+          >
+            {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
+              <option key={key} value={key}>{label}</option>
+            ))}
+          </select>
 
           {/* Flashcard */}
           <div
