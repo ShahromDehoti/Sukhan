@@ -480,8 +480,20 @@
   @media (max-width: 640px) {
 
     .category-row {
-      display: none; /* hide pills */
+      display: none;
     }
+
+  .category-dropdown {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    margin: 12px 0 16px;
+  }
+
     .app-card {
       border-radius: 18px;
       padding: 18px 14px 22px;
