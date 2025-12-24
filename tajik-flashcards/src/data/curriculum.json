@@ -24,9 +24,7 @@
           "words": [
             { "category": "greetings", "index": 2 },
             { "category": "greetings", "index": 3 },
-            { "category": "greetings", "index": 4 },
-            { "category": "greetings", "index": 5 },
-            { "category": "greetings", "index": 6 }
+            { "category": "greetings", "index": 4 }
           ]
         },
         {
