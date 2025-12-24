@@ -517,6 +517,9 @@ function App() {
                 <h1 className="app-title">{selectedLesson.title}</h1>
                 <p className="app-subtitle">{selectedLesson.description}</p>
               </div>
+              {completed && (
+                <span className="status-badge status-badge--completed">✓ Completed</span>
+              )}
             </header>
 
             {current ? (
@@ -542,9 +545,6 @@ function App() {
                     </button>
                   )}
                 </div>
-                {completed && (
-                  <div className="lesson-complete-badge">✓ Lesson completed</div>
-                )}
               </>
             ) : (
               <p>No words in this lesson.</p>

@@ -241,6 +241,27 @@
   }
 
   /* ===== LESSON COMPLETE BADGE ===== */
+  .header-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .status-badge {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  .status-badge--completed {
+    color: #16a34a;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+  }
+
   .lesson-complete-badge {
     margin-top: 14px;
     text-align: center;
