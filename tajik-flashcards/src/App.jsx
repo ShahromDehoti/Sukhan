@@ -894,16 +894,18 @@ function App() {
         <div className="flashcard-inner">
           {/* FRONT */}
           <div className="flashcard-face flashcard-front">
-            <div className="flashcard-tajik">{word.tajik}</div>
-            <button
-              className="audio-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                speak(word.tajik);
-              }}
-            >
-              Pronounce
-            </button>
+            <div className="flashcard-tajik-row">
+              <span className="flashcard-tajik">{word.tajik}</span>
+              <button
+                className="audio-button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  speak(word.tajik);
+                }}
+              >
+                🔊
+              </button>
+            </div>
             <div className="flashcard-pron-latin">
               {word.pronunciation_latin}
             </div>
