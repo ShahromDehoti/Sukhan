@@ -1,0 +1,58 @@
+{
+  "units": [
+    {
+      "id": "unit-1",
+      "title": "Basics",
+      "description": "Essential greetings and food vocabulary to get started",
+      "lessons": [
+        {
+          "id": "lesson-1-1",
+          "title": "Hello & Goodbye",
+          "description": "Learn to greet and say farewell",
+          "words": [
+            { "category": "greetings", "index": 0 },
+            { "category": "greetings", "index": 1 },
+            { "category": "greetings", "index": 7 },
+            { "category": "greetings", "index": 8 },
+            { "category": "greetings", "index": 9 }
+          ]
+        },
+        {
+          "id": "lesson-1-2",
+          "title": "Time-of-Day Greetings",
+          "description": "Greet people at different times of day",
+          "words": [
+            { "category": "greetings", "index": 2 },
+            { "category": "greetings", "index": 3 },
+            { "category": "greetings", "index": 4 }
+          ]
+        },
+        {
+          "id": "lesson-1-3",
+          "title": "Essential Food",
+          "description": "Basic food and drink vocabulary",
+          "words": [
+            { "category": "food", "index": 0 },
+            { "category": "food", "index": 1 },
+            { "category": "food", "index": 2 },
+            { "category": "food", "index": 3 },
+            { "category": "food", "index": 4 }
+          ]
+        },
+        {
+          "id": "lesson-1-4",
+          "title": "More Food",
+          "description": "Expand your food vocabulary",
+          "words": [
+            { "category": "food", "index": 5 },
+            { "category": "food", "index": 6 },
+            { "category": "food", "index": 7 },
+            { "category": "food", "index": 8 },
+            { "category": "food", "index": 9 }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

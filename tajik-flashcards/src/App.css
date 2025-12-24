@@ -51,10 +51,216 @@
     color: #6b7280;
     opacity: 0.85;
     user-select: none;
-    /* border-top: 1px solid #e5e7eb;
-    padding-top: 14px; */
   }
-  
+
+  /* ===== BACK LINK ===== */
+  .back-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    color: #2563eb;
+    cursor: pointer;
+    margin-bottom: 6px;
+    display: inline-block;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== HOME VIEW ===== */
+  .home-section {
+    margin-bottom: 28px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: #111827;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 14px;
+  }
+
+  /* Unit cards grid */
+  .unit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  .unit-card {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border: 1px solid #bae6fd;
+    border-radius: 16px;
+    padding: 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .unit-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
+  }
+
+  .unit-card-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #0c4a6e;
+    margin-bottom: 4px;
+  }
+
+  .unit-card-desc {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 12px;
+  }
+
+  .unit-card-progress {
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 6px;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: #cbd5e1;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #0ea5e9);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+
+  /* ===== LESSON LIST ===== */
+  .lesson-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .lesson-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  }
+
+  .lesson-card:hover:not(:disabled) {
+    background: #f0f9ff;
+    border-color: #bae6fd;
+    transform: translateX(4px);
+  }
+
+  .lesson-card--completed {
+    background: #f0fdf4;
+    border-color: #86efac;
+  }
+
+  .lesson-card--locked {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .lesson-card--locked:hover {
+    transform: none;
+  }
+
+  .lesson-card-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .lesson-card--completed .lesson-card-number {
+    background: #16a34a;
+  }
+
+  .lesson-card--locked .lesson-card-number {
+    background: #9ca3af;
+  }
+
+  .lesson-card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .lesson-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 2px;
+  }
+
+  .lesson-card-desc {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 2px;
+  }
+
+  .lesson-card-words {
+    font-size: 12px;
+    color: #9ca3af;
+  }
+
+  .lesson-card-status {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .status-check {
+    color: #16a34a;
+  }
+
+  .status-lock {
+    font-size: 14px;
+  }
+
+  /* ===== LESSON COMPLETE BADGE ===== */
+  .lesson-complete-badge {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #16a34a;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-radius: 8px;
+    padding: 8px 14px;
+  }
+
+  .complete-button {
+    background: #16a34a;
+  }
+
+  .complete-button:hover {
+    background: #15803d;
+  }
+
   /* Header */
   .app-header {
     display: flex;
