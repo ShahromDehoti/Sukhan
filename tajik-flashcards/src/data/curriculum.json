@@ -52,7 +52,125 @@
           ]
         }
       ]
+    },
+    {
+      "id": "unit-2",
+      "title": "People & Family",
+      "description": "Learn words for family members and social relationships",
+      "lessons": [
+        {
+          "id": "lesson-2-1",
+          "title": "Core Family",
+          "description": "Parents and siblings",
+          "words": [
+            { "category": "people_family", "index": 0 },
+            { "category": "people_family", "index": 1 },
+            { "category": "people_family", "index": 2 },
+            { "category": "people_family", "index": 3 },
+            { "category": "people_family", "index": 4 }
+          ]
+        },
+        {
+          "id": "lesson-2-2",
+          "title": "Children",
+          "description": "Sons, daughters, and children",
+          "words": [
+            { "category": "people_family", "index": 5 },
+            { "category": "people_family", "index": 6 },
+            { "category": "people_family", "index": 9 }
+          ]
+        },
+        {
+          "id": "lesson-2-3",
+          "title": "Social Connections",
+          "description": "Friends and neighbors",
+          "words": [
+            { "category": "people_family", "index": 7 },
+            { "category": "people_family", "index": 8 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit-3",
+      "title": "Weather & Seasons",
+      "description": "Talk about weather and the seasons",
+      "lessons": [
+        {
+          "id": "lesson-3-1",
+          "title": "Weather Basics",
+          "description": "Common weather vocabulary",
+          "words": [
+            { "category": "weather_seasons", "index": 0 },
+            { "category": "weather_seasons", "index": 1 },
+            { "category": "weather_seasons", "index": 2 }
+          ]
+        },
+        {
+          "id": "lesson-3-2",
+          "title": "Seasons",
+          "description": "Summer and winter",
+          "words": [
+            { "category": "weather_seasons", "index": 3 },
+            { "category": "weather_seasons", "index": 4 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit-4",
+      "title": "Adjectives",
+      "description": "Describe things with common adjectives",
+      "lessons": [
+        {
+          "id": "lesson-4-1",
+          "title": "Size & Age",
+          "description": "Big, small, new, and old",
+          "words": [
+            { "category": "adjectives", "index": 0 },
+            { "category": "adjectives", "index": 1 },
+            { "category": "adjectives", "index": 2 },
+            { "category": "adjectives", "index": 3 },
+            { "category": "adjectives", "index": 4 }
+          ]
+        },
+        {
+          "id": "lesson-4-2",
+          "title": "Quality & Appearance",
+          "description": "Delicate, bright, clean, and pure",
+          "words": [
+            { "category": "adjectives", "index": 5 },
+            { "category": "adjectives", "index": 6 },
+            { "category": "adjectives", "index": 7 },
+            { "category": "adjectives", "index": 8 },
+            { "category": "adjectives", "index": 9 }
+          ]
+        },
+        {
+          "id": "lesson-4-3",
+          "title": "Physical Properties",
+          "description": "Tall, low, heavy, light, and sweet",
+          "words": [
+            { "category": "adjectives", "index": 10 },
+            { "category": "adjectives", "index": 11 },
+            { "category": "adjectives", "index": 12 },
+            { "category": "adjectives", "index": 13 },
+            { "category": "adjectives", "index": 14 }
+          ]
+        },
+        {
+          "id": "lesson-4-4",
+          "title": "Taste & Temperature",
+          "description": "Bitter, warm, cold, fast, and smooth",
+          "words": [
+            { "category": "adjectives", "index": 15 },
+            { "category": "adjectives", "index": 16 },
+            { "category": "adjectives", "index": 17 },
+            { "category": "adjectives", "index": 18 },
+            { "category": "adjectives", "index": 19 }
+          ]
+        }
+      ]
     }
   ]
 }
-
