@@ -24,6 +24,10 @@ import {
   getQuizWords,
   shuffleTranslations,
 } from "./utils/srs";
+import {
+  getPronunciationDisplay,
+  setPronunciationDisplay,
+} from "./utils/settings";
 import "./App.css";
 
 const CATEGORY_LABELS = {
@@ -83,6 +87,15 @@ function App() {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [feedbackText, setFeedbackText] = useState("");
   const [showToast, setShowToast] = useState(false);
+
+  // Settings modal state
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [pronDisplay, setPronDisplay] = useState(() => getPronunciationDisplay());
+
+  const handlePronDisplayChange = (value) => {
+    setPronDisplay(value);
+    setPronunciationDisplay(value);
+  };
 
   // Force re-render when progress changes
   const [, setProgressTick] = useState(0);
@@ -302,12 +315,21 @@ function App() {
                   Learn Tajik through structured lessons or free practice.
                 </p>
               </div>
-              <button
-                className="ghost-button"
-                onClick={() => setIsFeedbackOpen(true)}
-              >
-                Leave Feedback
-              </button>
+              <div className="header-actions">
+                <button
+                  className="icon-button"
+                  onClick={() => setIsSettingsOpen(true)}
+                  title="Settings"
+                >
+                  ⚙️
+                </button>
+                <button
+                  className="ghost-button"
+                  onClick={() => setIsFeedbackOpen(true)}
+                >
+                  Feedback
+                </button>
+              </div>
             </header>
 
             <div className="home-section">
@@ -357,6 +379,7 @@ function App() {
             </div>
 
             {renderFeedbackModal()}
+            {renderSettingsModal()}
             {showToast && (
               <div className="toast">Feedback sent! Thank you 🙌</div>
             )}
@@ -882,6 +905,9 @@ function App() {
   // ============ SHARED COMPONENTS ============
 
   function renderFlashcard(word, isReview = false) {
+    const showLatin = pronDisplay === "both" || pronDisplay === "latin";
+    const showCyrillic = pronDisplay === "both" || pronDisplay === "cyrillic";
+
     return (
       <div
         className={
@@ -906,12 +932,16 @@ function App() {
                 🔊
               </button>
             </div>
-            <div className="flashcard-pron-latin">
-              {word.pronunciation_latin}
-            </div>
-            <div className="flashcard-pron-cyr">
-              {word.pronunciation_cyrillic}
-            </div>
+            {showLatin && (
+              <div className="flashcard-pron-latin">
+                {word.pronunciation_latin}
+              </div>
+            )}
+            {showCyrillic && (
+              <div className="flashcard-pron-cyr">
+                {word.pronunciation_cyrillic}
+              </div>
+            )}
             {!showBack && (
               <div className="flashcard-hint">Click to show translations</div>
             )}
@@ -985,6 +1015,52 @@ function App() {
               disabled={!feedbackText.trim()}
             >
               Send
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  function renderSettingsModal() {
+    if (!isSettingsOpen) return null;
+
+    const options = [
+      { value: "both", label: "Both (Latin & Cyrillic)" },
+      { value: "latin", label: "Latin only" },
+      { value: "cyrillic", label: "Cyrillic only" },
+      { value: "none", label: "None" },
+    ];
+
+    return (
+      <div className="settings-overlay" onClick={() => setIsSettingsOpen(false)}>
+        <div className="settings-modal" onClick={(e) => e.stopPropagation()}>
+          <h2 className="settings-title">Settings</h2>
+
+          <div className="settings-section">
+            <h3 className="settings-label">Pronunciation Display</h3>
+            <div className="settings-options">
+              {options.map((opt) => (
+                <label key={opt.value} className="settings-option">
+                  <input
+                    type="radio"
+                    name="pronDisplay"
+                    value={opt.value}
+                    checked={pronDisplay === opt.value}
+                    onChange={() => handlePronDisplayChange(opt.value)}
+                  />
+                  <span>{opt.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className="settings-actions">
+            <button
+              className="primary-button"
+              onClick={() => setIsSettingsOpen(false)}
+            >
+              Done
             </button>
           </div>
         </div>
