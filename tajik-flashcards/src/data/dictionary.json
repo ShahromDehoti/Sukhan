@@ -8,32 +8,25 @@
         "russian": "привет"
       },
       {
-        "tajik": "ассалом алейкум",
-        "pronunciation_latin": "assalom aleikum",
-        "pronunciation_cyrillic": "ас-сa-лoм а-лей-кyм",
-        "english": "peace be upon you",
-        "russian": "мир вам"
+        "tajik": "ном",
+        "pronunciation_latin": "nom",
+        "pronunciation_cyrillic": "ном",
+        "english": "name",
+        "russian": "имя"
       },
       {
-        "tajik": "субҳ ба хайр",
-        "pronunciation_latin": "subh ba khayr",
-        "pronunciation_cyrillic": "су́бҳ ба хайр",
-        "english": "good morning",
-        "russian": "доброе утро"
+        "tajik": "ман",
+        "pronunciation_latin": "mun",
+        "pronunciation_cyrillic": "ман",
+        "english": "I, me",
+        "russian": "я"
       },
       {
-        "tajik": "рӯз ба хайр",
-        "pronunciation_latin": "ruz ba khayr",
-        "pronunciation_cyrillic": "руз ба хайр",
-        "english": "good day",
-        "russian": "добрый день"
-      },
-      {
-        "tajik": "бегоҳ ба хайр",
-        "pronunciation_latin": "begoh ba khayr",
-        "pronunciation_cyrillic": "бе-го́ҳ ба хайр",
-        "english": "good evening",
-        "russian": "добрый вечер"
+        "tajik": "чихел шумо",
+        "pronunciation_latin": "chihel shumo",
+        "pronunciation_cyrillic": "чи-хел шу-мо",
+        "english": "how are you?",
+        "russian": "Как ты?"
       },
       {
         "tajik": "хубӣ?",

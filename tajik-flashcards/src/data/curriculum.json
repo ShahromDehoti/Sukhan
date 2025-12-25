@@ -19,8 +19,8 @@
         },
         {
           "id": "lesson-1-2",
-          "title": "Time-of-Day Greetings",
-          "description": "Greet people at different times of day",
+          "title": "Introductions",
+          "description": "Introduce yourself to others",
           "words": [
             { "category": "greetings", "index": 2 },
             { "category": "greetings", "index": 3 },
