@@ -156,45 +156,67 @@ export function getWordsUpToLesson(lessons, upToLesson) {
 }
 
 /**
- * Get words for mid-unit review (focus on hard words)
+ * Get words for mid-unit review (focus on hard words, but include 70% of covered material)
  * @param {Array} lessons - Unit lessons
  * @param {number} upToLesson - Lessons completed so far
  * @returns {Array} - Word references for review
  */
 export function getMidUnitReviewWords(lessons, upToLesson) {
   const allWords = getWordsUpToLesson(lessons, upToLesson);
+  const targetCount = Math.ceil(allWords.length * 0.7); // 70% of covered words
+  
   const hardWords = getHardWords(allWords);
   
-  // If no hard words yet, return a sample of all words
-  if (hardWords.length === 0) {
-    return allWords.slice(0, Math.min(5, allWords.length));
+  // If hard words meet or exceed 70%, just use hard words
+  if (hardWords.length >= targetCount) {
+    return hardWords.sort(() => Math.random() - 0.5);
   }
   
-  return hardWords;
+  // Otherwise, fill remaining slots with non-hard words
+  const hardWordIds = new Set(hardWords.map((w) => getWordId(w.category, w.index)));
+  const otherWords = allWords.filter(
+    (w) => !hardWordIds.has(getWordId(w.category, w.index))
+  );
+  
+  // Shuffle other words and take what we need to reach 70%
+  const shuffledOthers = [...otherWords].sort(() => Math.random() - 0.5);
+  const neededCount = targetCount - hardWords.length;
+  const selectedOthers = shuffledOthers.slice(0, neededCount);
+  
+  // Combine hard words (priority) with selected others, then shuffle
+  const reviewWords = [...hardWords, ...selectedOthers];
+  return reviewWords.sort(() => Math.random() - 0.5);
 }
 
 /**
- * Get words for end-of-unit review (mix hard + some easy)
+ * Get words for end-of-unit review (70% coverage, hard words priority + mix of easier)
  * @param {Array} lessons - Unit lessons
  * @returns {Array} - Word references for review
  */
 export function getEndUnitReviewWords(lessons) {
   const allWords = getWordsUpToLesson(lessons, lessons.length - 1);
+  const targetCount = Math.ceil(allWords.length * 0.7); // 70% of all unit words
+  
   const hardWords = getHardWords(allWords);
-  const easyWords = getEasyWords(allWords);
   
-  // Mix: all hard words + up to 3 random easy words
-  const shuffledEasy = [...easyWords].sort(() => Math.random() - 0.5);
-  const selectedEasy = shuffledEasy.slice(0, 3);
-  
-  const reviewWords = [...hardWords, ...selectedEasy];
-  
-  // If still empty, return all words
-  if (reviewWords.length === 0) {
-    return allWords;
+  // If hard words meet or exceed 70%, just use hard words
+  if (hardWords.length >= targetCount) {
+    return hardWords.sort(() => Math.random() - 0.5);
   }
   
-  // Shuffle the final set
+  // Otherwise, fill remaining slots with non-hard words (easier words)
+  const hardWordIds = new Set(hardWords.map((w) => getWordId(w.category, w.index)));
+  const otherWords = allWords.filter(
+    (w) => !hardWordIds.has(getWordId(w.category, w.index))
+  );
+  
+  // Shuffle other words and take what we need to reach 70%
+  const shuffledOthers = [...otherWords].sort(() => Math.random() - 0.5);
+  const neededCount = targetCount - hardWords.length;
+  const selectedOthers = shuffledOthers.slice(0, neededCount);
+  
+  // Combine hard words (priority) with selected others, then shuffle
+  const reviewWords = [...hardWords, ...selectedOthers];
   return reviewWords.sort(() => Math.random() - 0.5);
 }
 
