@@ -1,7 +1,8 @@
 // src/App.jsx
-import { useState, useMemo } from "react";
-import dictionary from "./data/dictionary.json";
+import { useState, useMemo, useEffect } from "react";
+import staticDictionary from "./data/dictionary.json";
 import curriculum from "./data/curriculum.json";
+import { fetchWordsFromSupabase, getAudioUrl } from "./utils/supabase";
 import {
   isLessonComplete,
   markLessonComplete,
@@ -44,7 +45,7 @@ const CATEGORY_LABELS = {
 };
 
 // Resolve word references from curriculum to actual word objects
-function resolveWords(wordRefs) {
+function resolveWords(wordRefs, dictionary) {
   return wordRefs
     .map((ref) => {
       const categoryWords = dictionary[ref.category];
@@ -58,6 +59,26 @@ function resolveWords(wordRefs) {
 }
 
 function App() {
+  // Dictionary data - fetched from Supabase with static fallback
+  const [dictionary, setDictionary] = useState(staticDictionary);
+  const [isLoadingWords, setIsLoadingWords] = useState(true);
+
+  // Fetch words from Supabase on mount
+  useEffect(() => {
+    async function loadWords() {
+      setIsLoadingWords(true);
+      const supabaseWords = await fetchWordsFromSupabase();
+      if (supabaseWords && Object.keys(supabaseWords).length > 0) {
+        setDictionary(supabaseWords);
+        console.log("Loaded words from Supabase");
+      } else {
+        console.log("Using static dictionary (Supabase empty or unavailable)");
+      }
+      setIsLoadingWords(false);
+    }
+    loadWords();
+  }, []);
+
   // View: "home" | "unit" | "lesson" | "review" | "quiz" | "practice"
   const [view, setView] = useState("home");
   const [selectedUnit, setSelectedUnit] = useState(null);
@@ -103,7 +124,7 @@ function App() {
   // Get words based on current mode
   const words = useMemo(() => {
     if (view === "lesson" && selectedLesson) {
-      return resolveWords(selectedLesson.words);
+      return resolveWords(selectedLesson.words, dictionary);
     }
     if (view === "review") {
       return reviewWords;
@@ -112,7 +133,7 @@ function App() {
       return dictionary[category] || [];
     }
     return [];
-  }, [view, selectedLesson, reviewWords, category]);
+  }, [view, selectedLesson, reviewWords, category, dictionary]);
 
   const current = words[index] || null;
 
@@ -185,14 +206,14 @@ function App() {
       wordRefs = getMidUnitReviewWords(selectedUnit.lessons, review.afterLessonIndex);
     }
 
-    const resolved = resolveWords(wordRefs);
+    const resolved = resolveWords(wordRefs, dictionary);
     setReviewWords(resolved);
     setView("review");
   };
 
   const openQuiz = () => {
     const wordRefs = getQuizWords(selectedUnit.lessons);
-    const resolved = resolveWords(wordRefs);
+    const resolved = resolveWords(wordRefs, dictionary);
     const translations = shuffleTranslations(resolved);
 
     setQuizWords(resolved);
@@ -283,8 +304,26 @@ function App() {
     }
   };
 
-  // Text-to-speech
-  const speak = (text) => {
+  // Audio playback - uses Supabase audio if available, falls back to TTS
+  const speak = (text, audioUrl) => {
+    // If we have an audio URL from Supabase, use it
+    if (audioUrl) {
+      const fullUrl = getAudioUrl(audioUrl);
+      if (fullUrl) {
+        const audio = new Audio(fullUrl);
+        audio.play().catch((err) => {
+          console.warn("Audio playback failed, falling back to TTS:", err);
+          speakWithTTS(text);
+        });
+        return;
+      }
+    }
+    // Fallback to text-to-speech
+    speakWithTTS(text);
+  };
+
+  // Text-to-speech fallback
+  const speakWithTTS = (text) => {
     if (!window.speechSynthesis) return;
 
     const utterance = new SpeechSynthesisUtterance(text);
@@ -926,7 +965,7 @@ function App() {
                 className="audio-button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  speak(word.tajik);
+                  speak(word.tajik, word.audio_url);
                 }}
               >
                 🔊
