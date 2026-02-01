@@ -1075,25 +1075,18 @@
           "russian": "тёплый / горячий"
         },
         {
-          "tajik": "сард",
-          "pronunciation_latin": "sard",
-          "pronunciation_cyrillic": "сард",
+          "tajik": "хунук",
+          "pronunciation_latin": "khoo-nook",
+          "pronunciation_cyrillic": "ху-нук",
           "english": "cold",
           "russian": "холодный"
         },
         {
-          "tajik": "зуд",
-          "pronunciation_latin": "zud",
-          "pronunciation_cyrillic": "зуд",
+          "tajik": "тез",
+          "pronunciation_latin": "tez",
+          "pronunciation_cyrillic": "тез",
           "english": "fast / quick",
           "russian": "быстрый"
-        },
-        {
-          "tajik": "оиниз",
-          "pronunciation_latin": "oiniz",
-          "pronunciation_cyrillic": "ой-низ",
-          "english": "smooth",
-          "russian": "гладкий"
         },
         {
           "tajik": "дақиқ",
