@@ -68,7 +68,7 @@
     "food": [
       {
         "tajik": "хӯрок",
-        "pronunciation_latin": "khorok",
+        "pronunciation_latin": "khurok",
         "pronunciation_cyrillic": "хӯ-ро́к",
         "english": "food",
         "russian": "еда"
@@ -169,7 +169,7 @@
       },
       {
         "tajik": "хоҳар",
-        "pronunciation_latin": "khokhar",
+        "pronunciation_latin": "khohar",
         "pronunciation_cyrillic": "хо́ҳар",
         "english": "sister",
         "russian": "сестра"
@@ -1076,7 +1076,7 @@
         },
         {
           "tajik": "хунук",
-          "pronunciation_latin": "khoo-nook",
+          "pronunciation_latin": "khunuk",
           "pronunciation_cyrillic": "ху-нук",
           "english": "cold",
           "russian": "холодный"
