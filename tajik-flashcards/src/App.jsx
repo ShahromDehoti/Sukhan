@@ -1,8 +1,6 @@
 // src/App.jsx
 import { useState, useMemo, useEffect } from "react";
-import staticDictionary from "./data/dictionary.json";
-import curriculum from "./data/curriculum.json";
-import { fetchWordsFromSupabase, getAudioUrl } from "./utils/supabase";
+import { fetchCurriculum, fetchWords, getAudioUrl } from "./utils/supabase";
 import {
   isLessonComplete,
   markLessonComplete,
@@ -18,7 +16,6 @@ import {
 } from "./utils/progress";
 import {
   rateWord,
-  getWordId,
   markWordSeen,
   getMidUnitReviewWords,
   getEndUnitReviewWords,
@@ -44,39 +41,34 @@ const CATEGORY_LABELS = {
   adjectives: "Adjectives",
 };
 
-// Resolve word references from curriculum to actual word objects
-function resolveWords(wordRefs, dictionary) {
-  return wordRefs
-    .map((ref) => {
-      const categoryWords = dictionary[ref.category];
-      if (!categoryWords) return null;
-      const word = categoryWords[ref.index];
-      if (!word) return null;
-      // Attach ref info for SRS tracking
-      return { ...word, _category: ref.category, _index: ref.index };
-    })
-    .filter(Boolean);
-}
-
 function App() {
-  // Dictionary data - fetched from Supabase with static fallback
-  const [dictionary, setDictionary] = useState(staticDictionary);
-  const [isLoadingWords, setIsLoadingWords] = useState(true);
+  // Curriculum data - fetched from Supabase
+  const [curriculum, setCurriculum] = useState([]);
+  const [dictionary, setDictionary] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Fetch words from Supabase on mount
+  // Fetch curriculum and words from Supabase on mount
   useEffect(() => {
-    async function loadWords() {
-      setIsLoadingWords(true);
-      const supabaseWords = await fetchWordsFromSupabase();
-      if (supabaseWords && Object.keys(supabaseWords).length > 0) {
-        setDictionary(supabaseWords);
-        console.log("Loaded words from Supabase");
-      } else {
-        console.log("Using static dictionary (Supabase empty or unavailable)");
+    async function loadData() {
+      setIsLoading(true);
+      
+      // Fetch curriculum (units with lessons and words)
+      const curriculumData = await fetchCurriculum();
+      if (curriculumData) {
+        setCurriculum(curriculumData);
+        console.log("Loaded curriculum from Supabase");
       }
-      setIsLoadingWords(false);
+      
+      // Fetch all words grouped by category (for practice mode)
+      const wordsData = await fetchWords();
+      if (wordsData) {
+        setDictionary(wordsData);
+        console.log("Loaded words from Supabase");
+      }
+      
+      setIsLoading(false);
     }
-    loadWords();
+    loadData();
   }, []);
 
   // View: "home" | "unit" | "lesson" | "review" | "quiz" | "practice"
@@ -124,7 +116,8 @@ function App() {
   // Get words based on current mode
   const words = useMemo(() => {
     if (view === "lesson" && selectedLesson) {
-      return resolveWords(selectedLesson.words, dictionary);
+      // Words are already resolved in the lesson from Supabase
+      return selectedLesson.words || [];
     }
     if (view === "review") {
       return reviewWords;
@@ -198,25 +191,23 @@ function App() {
     setShowBack(false);
     setHasRated(false);
 
-    // Get appropriate words for review
-    let wordRefs;
+    // Get appropriate words for review (words are already resolved in lessons)
+    let words;
     if (review.isEndReview) {
-      wordRefs = getEndUnitReviewWords(selectedUnit.lessons);
+      words = getEndUnitReviewWords(selectedUnit.lessons);
     } else {
-      wordRefs = getMidUnitReviewWords(selectedUnit.lessons, review.afterLessonIndex);
+      words = getMidUnitReviewWords(selectedUnit.lessons, review.afterLessonIndex);
     }
 
-    const resolved = resolveWords(wordRefs, dictionary);
-    setReviewWords(resolved);
+    setReviewWords(words);
     setView("review");
   };
 
   const openQuiz = () => {
-    const wordRefs = getQuizWords(selectedUnit.lessons);
-    const resolved = resolveWords(wordRefs, dictionary);
-    const translations = shuffleTranslations(resolved);
+    const quizWordsData = getQuizWords(selectedUnit.lessons);
+    const translations = shuffleTranslations(quizWordsData);
 
-    setQuizWords(resolved);
+    setQuizWords(quizWordsData);
     setQuizTranslations(translations);
     setQuizMatches({});
     setSelectedWordIdx(null);
@@ -234,9 +225,9 @@ function App() {
 
   const completeLesson = () => {
     if (selectedLesson) {
-      // Mark all words as seen
-      selectedLesson.words.forEach((ref) => {
-        markWordSeen(getWordId(ref.category, ref.index));
+      // Mark all words as seen (using Supabase word ID)
+      selectedLesson.words.forEach((word) => {
+        markWordSeen(word.id);
       });
       markLessonComplete(selectedLesson.id);
       setProgressTick((t) => t + 1);
@@ -254,9 +245,8 @@ function App() {
 
   // SRS rating handler
   const handleRate = (rating) => {
-    if (!current || !current._category) return;
-    const wordId = getWordId(current._category, current._index);
-    rateWord(wordId, rating);
+    if (!current || !current.id) return;
+    rateWord(current.id, rating);
     setHasRated(true);
   };
 
@@ -341,6 +331,20 @@ function App() {
 
   // ============ RENDER VIEWS ============
 
+  // LOADING STATE
+  if (isLoading) {
+    return (
+      <div className="app-root">
+        <div className="app-wrapper">
+          <div className="app-card" style={{ textAlign: "center", padding: "4rem" }}>
+            <h1 className="app-title">Sukhan</h1>
+            <p className="app-subtitle">Loading...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // HOME VIEW
   if (view === "home") {
     return (
@@ -377,7 +381,7 @@ function App() {
                 Structured lessons with reviews and quizzes to build your vocabulary.
               </p>
               <div className="unit-grid">
-                {curriculum.units.map((unit) => {
+                {curriculum.map((unit) => {
                   const completed = getUnitProgress(unit.lessons);
                   const total = unit.lessons.length;
                   const quizDone = isQuizComplete(`quiz-${unit.id}`);

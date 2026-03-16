@@ -3,7 +3,6 @@
 
 const STORAGE_KEY = "sukhan_word_progress";
 
-// Default ease factor for new words
 const DEFAULT_EASE = 2.5;
 const MIN_EASE = 1.3;
 
@@ -29,10 +28,11 @@ function saveWordProgress(progress) {
 }
 
 /**
- * Generate a unique word ID from category and index
+ * Generate a unique word ID - now uses Supabase ID
+ * @param {number|string} id - Supabase word ID
  */
-export function getWordId(category, index) {
-  return `${category}_${index}`;
+export function getWordId(id) {
+  return `word_${id}`;
 }
 
 /**
@@ -45,8 +45,10 @@ export function getWordData(wordId) {
 
 /**
  * Record that a word was seen (initial exposure in lesson)
+ * @param {number|string} id - Supabase word ID
  */
-export function markWordSeen(wordId) {
+export function markWordSeen(id) {
+  const wordId = getWordId(id);
   const progress = getWordProgress();
   if (!progress[wordId]) {
     progress[wordId] = {
@@ -63,10 +65,11 @@ export function markWordSeen(wordId) {
 
 /**
  * Record a rating for a word (SRS update)
- * @param {string} wordId
+ * @param {number|string} id - Supabase word ID
  * @param {"again" | "hard" | "good" | "easy"} rating
  */
-export function rateWord(wordId, rating) {
+export function rateWord(id, rating) {
+  const wordId = getWordId(id);
   const progress = getWordProgress();
   const today = new Date().toISOString().split("T")[0];
 
@@ -115,13 +118,13 @@ export function rateWord(wordId, rating) {
 
 /**
  * Get words that were rated as difficult (again or hard)
- * @param {Array} wordRefs - Array of { category, index } references
- * @returns {Array} - Filtered word references that were hard
+ * @param {Array} words - Array of word objects with id property
+ * @returns {Array} - Filtered words that were hard
  */
-export function getHardWords(wordRefs) {
+export function getHardWords(words) {
   const progress = getWordProgress();
-  return wordRefs.filter((ref) => {
-    const wordId = getWordId(ref.category, ref.index);
+  return words.filter((word) => {
+    const wordId = getWordId(word.id);
     const data = progress[wordId];
     return data && (data.rating === "again" || data.rating === "hard");
   });
@@ -129,13 +132,13 @@ export function getHardWords(wordRefs) {
 
 /**
  * Get words that were rated as easier (good or easy)
- * @param {Array} wordRefs - Array of { category, index } references
- * @returns {Array} - Filtered word references that were easy
+ * @param {Array} words - Array of word objects with id property
+ * @returns {Array} - Filtered words that were easy
  */
-export function getEasyWords(wordRefs) {
+export function getEasyWords(words) {
   const progress = getWordProgress();
-  return wordRefs.filter((ref) => {
-    const wordId = getWordId(ref.category, ref.index);
+  return words.filter((word) => {
+    const wordId = getWordId(word.id);
     const data = progress[wordId];
     return data && (data.rating === "good" || data.rating === "easy");
   });
@@ -143,9 +146,9 @@ export function getEasyWords(wordRefs) {
 
 /**
  * Get all words from completed lessons in a unit up to a certain point
- * @param {Array} lessons - Array of lesson objects
+ * @param {Array} lessons - Array of lesson objects (with words arrays)
  * @param {number} upToLesson - Include words from lessons 0 to upToLesson (inclusive)
- * @returns {Array} - All word references
+ * @returns {Array} - All word objects
  */
 export function getWordsUpToLesson(lessons, upToLesson) {
   const words = [];
@@ -159,31 +162,25 @@ export function getWordsUpToLesson(lessons, upToLesson) {
  * Get words for mid-unit review (focus on hard words, but include 70% of covered material)
  * @param {Array} lessons - Unit lessons
  * @param {number} upToLesson - Lessons completed so far
- * @returns {Array} - Word references for review
+ * @returns {Array} - Words for review
  */
 export function getMidUnitReviewWords(lessons, upToLesson) {
   const allWords = getWordsUpToLesson(lessons, upToLesson);
-  const targetCount = Math.ceil(allWords.length * 0.7); // 70% of covered words
-  
+  const targetCount = Math.ceil(allWords.length * 0.7);
+
   const hardWords = getHardWords(allWords);
-  
-  // If hard words meet or exceed 70%, just use hard words
+
   if (hardWords.length >= targetCount) {
     return hardWords.sort(() => Math.random() - 0.5);
   }
-  
-  // Otherwise, fill remaining slots with non-hard words
-  const hardWordIds = new Set(hardWords.map((w) => getWordId(w.category, w.index)));
-  const otherWords = allWords.filter(
-    (w) => !hardWordIds.has(getWordId(w.category, w.index))
-  );
-  
-  // Shuffle other words and take what we need to reach 70%
+
+  const hardWordIds = new Set(hardWords.map((w) => w.id));
+  const otherWords = allWords.filter((w) => !hardWordIds.has(w.id));
+
   const shuffledOthers = [...otherWords].sort(() => Math.random() - 0.5);
   const neededCount = targetCount - hardWords.length;
   const selectedOthers = shuffledOthers.slice(0, neededCount);
-  
-  // Combine hard words (priority) with selected others, then shuffle
+
   const reviewWords = [...hardWords, ...selectedOthers];
   return reviewWords.sort(() => Math.random() - 0.5);
 }
@@ -191,31 +188,25 @@ export function getMidUnitReviewWords(lessons, upToLesson) {
 /**
  * Get words for end-of-unit review (70% coverage, hard words priority + mix of easier)
  * @param {Array} lessons - Unit lessons
- * @returns {Array} - Word references for review
+ * @returns {Array} - Words for review
  */
 export function getEndUnitReviewWords(lessons) {
   const allWords = getWordsUpToLesson(lessons, lessons.length - 1);
-  const targetCount = Math.ceil(allWords.length * 0.7); // 70% of all unit words
-  
+  const targetCount = Math.ceil(allWords.length * 0.7);
+
   const hardWords = getHardWords(allWords);
-  
-  // If hard words meet or exceed 70%, just use hard words
+
   if (hardWords.length >= targetCount) {
     return hardWords.sort(() => Math.random() - 0.5);
   }
-  
-  // Otherwise, fill remaining slots with non-hard words (easier words)
-  const hardWordIds = new Set(hardWords.map((w) => getWordId(w.category, w.index)));
-  const otherWords = allWords.filter(
-    (w) => !hardWordIds.has(getWordId(w.category, w.index))
-  );
-  
-  // Shuffle other words and take what we need to reach 70%
+
+  const hardWordIds = new Set(hardWords.map((w) => w.id));
+  const otherWords = allWords.filter((w) => !hardWordIds.has(w.id));
+
   const shuffledOthers = [...otherWords].sort(() => Math.random() - 0.5);
   const neededCount = targetCount - hardWords.length;
   const selectedOthers = shuffledOthers.slice(0, neededCount);
-  
-  // Combine hard words (priority) with selected others, then shuffle
+
   const reviewWords = [...hardWords, ...selectedOthers];
   return reviewWords.sort(() => Math.random() - 0.5);
 }
@@ -223,7 +214,7 @@ export function getEndUnitReviewWords(lessons) {
 /**
  * Get 5 random words for quiz from a unit
  * @param {Array} lessons - Unit lessons
- * @returns {Array} - 5 word references for quiz
+ * @returns {Array} - 5 word objects for quiz
  */
 export function getQuizWords(lessons) {
   const allWords = getWordsUpToLesson(lessons, lessons.length - 1);
@@ -233,25 +224,21 @@ export function getQuizWords(lessons) {
 
 /**
  * Shuffle translations so they don't align with their words
- * @param {Array} words - Array of word objects (resolved)
- * @returns {Array} - Shuffled translations ensuring no direct adjacency
+ * @param {Array} words - Array of word objects
+ * @returns {Array} - Shuffled translations
  */
 export function shuffleTranslations(words) {
   if (words.length <= 1) return words.map((w) => w.english);
-  
+
   const translations = words.map((w) => w.english);
   let shuffled;
   let attempts = 0;
-  
-  // Try to shuffle so no translation is in its original position
+
   do {
     shuffled = [...translations].sort(() => Math.random() - 0.5);
     attempts++;
-  } while (
-    attempts < 50 &&
-    shuffled.some((t, i) => t === translations[i])
-  );
-  
+  } while (attempts < 50 && shuffled.some((t, i) => t === translations[i]));
+
   return shuffled;
 }
 
@@ -261,4 +248,3 @@ export function shuffleTranslations(words) {
 export function resetWordProgress() {
   localStorage.removeItem(STORAGE_KEY);
 }
-
