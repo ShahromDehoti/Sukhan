@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# A new push to the same branch cancels the in-flight run rather than queueing
+# behind it.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Vite requires these at build time. They are publishable client credentials,
+  # and the build only needs them to be present and well-formed — CI never
+  # reaches the real project. Real values come from repository secrets on deploy.
+  VITE_SUPABASE_URL: https://ci.example.supabase.co
+  VITE_SUPABASE_ANON_KEY: ci-placeholder-anon-key
+
+jobs:
+  verify:
+    name: Lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Enable Corepack
+        # Pins pnpm to the `packageManager` field in package.json, so CI and
+        # local development cannot drift onto different package-manager versions.
+        run: corepack enable
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Unit and component tests
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: Domain coverage
+        # The domain core is pure and fully reachable, so it carries an
+        # enforced threshold (see packages/core/vitest.config.ts). This step
+        # fails if coverage drops below it.
+        run: pnpm --filter @sukhan/core test:coverage
