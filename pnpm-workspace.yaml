@@ -1,0 +1,11 @@
+packages:
+  - "packages/*"
+  - "evals"
+allowBuilds:
+  # esbuild's postinstall fetches its platform-specific binary; Vite and Vitest
+  # cannot run without it.
+  esbuild: true
+  # MSW's postinstall only exists to copy its browser service worker into a
+  # public directory. Component tests run under jsdom and use `setupServer`,
+  # which intercepts in Node and needs no worker file.
+  msw: false
