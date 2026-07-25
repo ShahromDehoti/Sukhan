@@ -1,0 +1,1003 @@
+/*
+ * Feature-level styling.
+ *
+ * This is a port of the original App.css onto the class vocabulary the
+ * rewritten components use. The palette, spacing, radii, shadows, and
+ * animations are carried over unchanged — the app should look the way it did
+ * before the rewrite. What changed is which selectors carry them, because the
+ * markup changed shape: cards are `<a>`/`<button>` elements rather than divs,
+ * lists are real `<ul>`/`<ol>`, and grouped controls are `<fieldset>`s.
+ *
+ * `index.css` owns the base layer (tokens, focus ring, reduced motion, screen
+ * reader utilities) and is imported first, so anything here overrides it.
+ */
+
+/*
+ * The design is light-only, as it was before. `index.css` defines a dark
+ * palette, but every colour below is a literal from the original stylesheet, so
+ * honouring a dark preference would produce near-white body text on a light
+ * gradient. Pinning the scheme keeps form controls and scrollbars consistent
+ * with that. Wiring the dark tokens through these rules is a separate change.
+ */
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #e0f2fe, #f9fafb 55%);
+  /* Set explicitly: index.css points this at a token that inverts in dark mode. */
+  color: #111827;
+}
+
+/* ===== ROOT LAYOUT ===== */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+.app-card {
+  width: 100%;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.15);
+  padding: 24px 24px 28px;
+}
+
+/* The shell gives `<main>` tabindex="-1" for the skip link; never outline it. */
+.app-card:focus {
+  outline: none;
+}
+
+.global-footer {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+  opacity: 0.85;
+  user-select: none;
+}
+
+/* ===== HEADER ===== */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.app-title-link {
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+  color: #111827;
+}
+
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.icon-button:hover {
+  background: #eef2ff;
+  transform: scale(1.05);
+}
+
+/* ===== BUTTONS ===== */
+/*
+ * `.primary-button` is applied to `<Link>` as well as `<button>`, so it resets
+ * link decoration and sets its own font rather than inheriting the UA button
+ * font in one case and the body font in the other.
+ */
+.primary-button {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+  transition: background 0.15s, transform 0.08s, box-shadow 0.08s;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.4);
+}
+
+.primary-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+}
+
+.primary-button:disabled {
+  background: #9ca3af;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Deck navigation — the quieter counterpart to the primary action. */
+.secondary-button {
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  background: #f9fafb;
+  color: #374151;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.secondary-button:hover:not(:disabled) {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  transform: translateY(-1px);
+}
+
+.secondary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Header "Feedback" and dialog "Cancel" — the original `.ghost-button`. */
+.text-button {
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  color: #374151;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.text-button:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  transform: translateY(-1px);
+}
+
+.back-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 13px;
+  color: #2563eb;
+  cursor: pointer;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== SECTION HEADINGS ===== */
+.section-heading {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: #111827;
+}
+
+/* ===== HOME: UNIT CARDS ===== */
+.unit-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+/*
+ * A card is one `<a>` wrapping stacked spans, so it lays its own children out
+ * rather than relying on them being block-level.
+ */
+.unit-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 1px solid #bae6fd;
+  border-radius: 16px;
+  padding: 18px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.unit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
+}
+
+.unit-card--completed {
+  border-color: #86efac;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+.unit-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #0c4a6e;
+  margin-bottom: 4px;
+}
+
+.unit-card-description {
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+/* Pushed to the bottom so bars line up across cards of differing text length. */
+.unit-card-count {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: auto;
+  margin-bottom: 6px;
+}
+
+.unit-badge {
+  margin-left: 8px;
+  color: #16a34a;
+}
+
+.progress-bar {
+  display: block;
+  height: 6px;
+  background: #cbd5e1;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #0ea5e9);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.practice-section {
+  margin-top: 28px;
+}
+
+/* ===== UNIT: CHECKPOINT LIST ===== */
+.unit-description {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 14px;
+}
+
+.checkpoint-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Unlocked checkpoints render as links, locked ones as disabled buttons, so
+ * this has to sit correctly on both: full width, inherited font, no underline.
+ */
+.checkpoint-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.checkpoint-card:hover:not(:disabled) {
+  transform: translateX(4px);
+}
+
+.checkpoint-card--lesson:hover:not(:disabled) {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+.checkpoint-card--review {
+  background: #fefce8;
+  border-color: #fde047;
+}
+
+.checkpoint-card--review:hover:not(:disabled) {
+  background: #fef9c3;
+  border-color: #facc15;
+}
+
+.checkpoint-card--quiz {
+  background: #fdf4ff;
+  border-color: #e879f9;
+}
+
+.checkpoint-card--quiz:hover:not(:disabled) {
+  background: #fae8ff;
+  border-color: #d946ef;
+}
+
+.checkpoint-card--complete {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.checkpoint-card--locked {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.checkpoint-card--locked:hover {
+  transform: none;
+}
+
+.checkpoint-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.checkpoint-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.checkpoint-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.checkpoint-description {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.checkpoint-status {
+  font-size: 13px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+/* ===== FLASHCARD ===== */
+.flashcard {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 18px;
+}
+
+/*
+ * The flip target is a real button wrapping the card, so it resets the UA
+ * button chrome entirely. Perspective lives here rather than on `.flashcard`
+ * because it only applies to an element's direct children — and `.flashcard`'s
+ * only direct child is this button.
+ */
+.flashcard-flip {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.flashcard-inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 190px;
+  padding: 20px 16px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #eef2ff, #e0f2fe);
+  box-shadow: 0 16px 40px rgba(75, 85, 99, 0.35);
+  transform-style: preserve-3d;
+  /* Token so a reduced-motion preference collapses the half-turn. */
+  transition: transform var(--flip-duration, 0.6s) ease;
+}
+
+.flashcard--flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-flip:hover .flashcard-inner {
+  box-shadow: 0 20px 45px rgba(55, 65, 81, 0.35);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  padding: 26px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  text-align: center;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+.flashcard-tajik {
+  font-size: 32px;
+}
+
+.flashcard-pron-latin {
+  font-size: 16px;
+  color: #111827;
+}
+
+.flashcard-pron-cyr {
+  font-size: 14px;
+  color: #374151;
+  margin-top: 2px;
+}
+
+.flashcard-hint {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.flashcard-translation {
+  font-size: 17px;
+  color: #111827;
+  margin: 6px 0;
+}
+
+.flashcard-translation strong {
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/*
+ * The audio control is a sibling of the flip button rather than nested inside
+ * it (nesting buttons is invalid HTML), so it is positioned over the card and
+ * lifted above it to stay clickable.
+ */
+.audio-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.audio-button:hover {
+  background: #e0e7ff;
+  transform: scale(1.1);
+}
+
+/* ===== DECK NAVIGATION ===== */
+.deck-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.deck-position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  margin: 0;
+  padding: 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1;
+}
+
+.deck-hint {
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ===== PRACTICE: TOPIC PICKER ===== */
+/*
+ * One select at every width. The original showed a pill row on desktop and a
+ * separate dropdown on mobile; this replaces both.
+ */
+.category-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin: 12px 0 6px;
+}
+
+.category-select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  color: #374151;
+  margin-bottom: 16px;
+}
+
+/* ===== REVIEW: RATING ===== */
+.rating-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  border: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+/* A legend is not a flex item; full width makes it sit above the buttons. */
+.rating-legend {
+  width: 100%;
+  padding: 0;
+  text-align: center;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.rating-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.15s;
+}
+
+.rating-button:hover {
+  transform: translateY(-2px);
+}
+
+.rating-button--again {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.rating-button--again:hover {
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.25);
+}
+
+.rating-button--hard {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.rating-button--hard:hover {
+  box-shadow: 0 4px 12px rgba(194, 65, 12, 0.25);
+}
+
+.rating-button--good {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.rating-button--good:hover {
+  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.25);
+}
+
+.rating-button--easy {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.rating-button--easy:hover {
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+}
+
+.rating-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.rating-confirmation p {
+  margin: 0;
+}
+
+/* ===== QUIZ ===== */
+.quiz-instructions {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.quiz-columns {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.quiz-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.quiz-legend {
+  width: 100%;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.quiz-item {
+  position: relative;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  font-family: inherit;
+  font-size: 15px;
+  color: #111827;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.quiz-item:hover:not(:disabled) {
+  border-color: #a5b4fc;
+  background: #eef2ff;
+}
+
+.quiz-item--matched {
+  border-color: #a5b4fc;
+  background: #eef2ff;
+}
+
+.quiz-item--selected {
+  border-color: #2563eb;
+  background: #dbeafe;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.quiz-item--correct {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.quiz-item--wrong {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+/* The match number on a Tajik prompt, showing which English item it points at. */
+.quiz-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The ordinal printed inline before each English choice. */
+.quiz-index {
+  display: inline-block;
+  min-width: 18px;
+  margin-right: 8px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.quiz-result {
+  text-align: center;
+  padding: 20px;
+}
+
+.quiz-score {
+  font-size: 28px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+/* ===== LOADING, ERROR, EMPTY ===== */
+.loading-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.error-state {
+  text-align: center;
+  padding: 32px 20px;
+  color: #374151;
+}
+
+.error-message {
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+/* The raw failure text: present for diagnosis, not competing with the message. */
+.error-detail {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 16px;
+  overflow-wrap: anywhere;
+}
+
+.error-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.not-found {
+  text-align: center;
+  padding: 32px 20px;
+}
+
+/* ===== DIALOGS ===== */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.dialog-panel {
+  width: 100%;
+  max-width: 360px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 22px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  animation: popup 0.25s ease-out forwards;
+}
+
+/* The panel takes focus when no control inside it can; never outline it for that. */
+.dialog-panel:focus {
+  outline: none;
+}
+
+.dialog-title {
+  margin: 0 0 18px;
+  font-size: 18px;
+  color: #0f172a;
+  text-align: center;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+@keyframes popup {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== SETTINGS DIALOG ===== */
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.settings-legend {
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.settings-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.settings-option:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+}
+
+.settings-option input[type="radio"] {
+  accent-color: #2563eb;
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== FEEDBACK DIALOG ===== */
+.feedback-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.feedback-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  margin-bottom: 18px;
+}
+
+.feedback-status {
+  min-height: 1.5em;
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: #16a34a;
+  text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .app-root {
+    padding: 16px;
+  }
+
+  .app-card {
+    border-radius: 18px;
+    padding: 18px 14px 22px;
+  }
+
+  .flashcard {
+    max-width: 100%;
+  }
+
+  .app-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 500px) {
+  .quiz-columns {
+    flex-direction: column;
+  }
+
+  .deck-controls {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "sukhan",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Sukhan — a Tajik vocabulary trainer with a spaced-repetition scheduler.",
+  "packageManager": "pnpm@11.17.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @sukhan/web dev",
+    "build": "pnpm -r --sequential build",
+    "test": "pnpm -r test",
+    "test:watch": "pnpm -r test:watch",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "check": "pnpm lint && pnpm typecheck && pnpm test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "globals": "^16.5.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.65.0"
+  }
+}

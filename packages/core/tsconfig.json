@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["vitest/globals"]
+  },
+  // Deliberately no `rootDir` here: this project is what the editor, `tsc
+  // --noEmit`, and type-aware ESLint consult, so it should cover the build
+  // config too. Emit settings live in tsconfig.build.json.
+  "include": ["src/**/*.ts", "vitest.config.ts"]
+}
